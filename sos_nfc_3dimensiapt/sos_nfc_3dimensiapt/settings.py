@@ -9,7 +9,7 @@ import dj_database_url
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-3dimensiapt-nfc-key')
-DEBUG = os.environ.get('DJANGO_DEBUG', 'True') == 'False'
+DEBUG = os.environ.get('DJANGO_DEBUG', 'True') == 'True'
 ALLOWED_HOSTS = ['.vercel.app', '.3dimensiapt.com', '3dimensiapt.com', 'localhost', '127.0.0.1']
 
 # APPS INSTALADAS
