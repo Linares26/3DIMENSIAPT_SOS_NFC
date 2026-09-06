@@ -58,6 +58,26 @@
                 {% endif %}
             </nav>
         </div>
+
+        <!-- SELECTOR DE IDIOMAS DENTRO DEL BASE.HTML -->
+        <div class="language-selector">
+            <form action="{% url 'set_language' %}" method="post">
+                {% csrf_token %}
+                <input name="next" type="hidden" value="{{ request.path }}">
+                <select name="language" onchange="this.form.submit()" style="padding: 5px; border-radius: 5px;">
+                    {% get_current_language as CURRENT_LANG %}
+                    {% get_available_languages as LANGUAGES %}
+                    {% get_language_info_list for LANGUAGES as languages %}
+                    {% for lang in languages %}
+                        <option value="{{ lang.code }}" {% if lang.code == CURRENT_LANG %}selected{% endif %}>
+                            {% if lang.code == 'es' %}🇪🇸 Español{% endif %}
+                            {% if lang.code == 'pt-pt' %}🇵🇹 Português{% endif %}
+                            {% if lang.code == 'en' %}🇬🇧 English{% endif %}
+                        </option>
+                    {% endfor %}
+                </select>
+            </form>
+        </div>
     </header>
 
     <!-- MENSAJES FLASH GLOBALES -->
