@@ -13,6 +13,7 @@ from django.core.wsgi import get_wsgi_application
 
 # Configurar rutas
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+SECRET_PASS = os.environ.get('SECRET_PASS')
 if BASE_DIR not in sys.path:
     sys.path.append(BASE_DIR)
 
@@ -31,7 +32,7 @@ try:
     # Crear superusuario automáticamente si no existe
     User = get_user_model()
     if not User.objects.filter(username='admin').exists():
-        User.objects.create_superuser('3dimensiapt_admin', '3dimensiapt@gmail.com', 'Bambu93lab94')
+        User.objects.create_superuser('3dimensiapt_admin', '3dimensiapt@gmail.com', SECRET_PASS)
 except Exception as e:
     print(f"Error en autoconfiguración de BD: {e}")
 
