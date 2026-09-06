@@ -7,6 +7,8 @@ from pathlib import Path
 import dj_database_url
 from django.utils.translation import gettext_lazy as _
 
+BASE_DIR = Path(__file__).resolve().parent.parent
+
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
@@ -25,8 +27,6 @@ LANGUAGES = [
 LOCALE_PATHS = [
     BASE_DIR / 'locale',
 ]
-
-BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-3dimensiapt-nfc-key')
 DEBUG = os.environ.get('DJANGO_DEBUG', 'True') == 'True'
