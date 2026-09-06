@@ -1,0 +1,15 @@
+{
+    "version": 2,
+    "builds": [
+        {
+            "src": "sos_nfc_3dimensiapt/sos_nfc_3dimensiapt/wsgi.py",
+            "use": "@vercel/python"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "sos_nfc_3dimensiapt/sos_nfc_3dimensiapt/wsgi.py"
+        }
+    ]
+}
