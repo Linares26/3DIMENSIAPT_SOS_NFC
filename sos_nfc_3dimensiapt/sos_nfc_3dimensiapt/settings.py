@@ -10,7 +10,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-3dimensiapt-nfc-key')
 DEBUG = os.environ.get('DJANGO_DEBUG', 'True') == 'True'
-ALLOWED_HOSTS = ['.vercel.app', '.3dimensiapt.com', '3dimensiapt.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 # APPS INSTALADAS
 INSTALLED_APPS = [
@@ -109,7 +109,7 @@ else:
     # Configuración local de respaldo
     MEDIA_URL = '/media/'
     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-    
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # ==========================================
