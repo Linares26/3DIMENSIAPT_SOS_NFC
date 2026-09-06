@@ -11,34 +11,16 @@ import os
 import sys
 from django.core.wsgi import get_wsgi_application
 
-# Configurar rutas
+# Configurar la ruta raíz del proyecto para que Python reconozca los módulos
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 if BASE_DIR not in sys.path:
     sys.path.append(BASE_DIR)
 
+# Indicar el archivo de configuración settings.py
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'sos_nfc_3dimensiapt.settings')
 
+# Inicializar la aplicación WSGI
 application = get_wsgi_application()
 
-# --- MIGRACIONES Y SUPERUSUARIO SEGURO ---
-SECRET_PASS = os.environ.get('SECRET_PASS')
-
-if SECRET_PASS:
-    try:
-        from django.core.management import call_command
-        from django.contrib.auth import get_user_model
-
-        call_command('migrate', interactive=False)
-
-        User = get_user_model()
-        user, created = User.objects.get_or_create(
-            username='3dimensiapt_admin',
-            defaults={'email': '3dimensiapt@gmail.com', 'is_staff': True, 'is_superuser': True}
-        )
-        # Sincroniza la clave con la variable de Vercel sin guardarla en código
-        user.set_password(SECRET_PASS)
-        user.save()
-    except Exception as e:
-        print(f"Error en autoconfiguración de BD: {e}")
-
+# Variable requerida por el runtime de Vercel
 app = application
