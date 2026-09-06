@@ -1,0 +1,7 @@
+{
+    "python.defaultInterpreterPath": "C:\\Users\\clari\\.virtualenvs\\3DIMENSIAPT_SOS_NFC-LAr989qD\\Scripts\\python.exe",
+    "python.analysis.extraPaths": [
+        "./sos_nfc_3dimensiapt",
+        "C:\\Users\\clari\\.virtualenvs\\3DIMENSIAPT_SOS_NFC-LAr989qD\\Lib\\site-packages"
+    ]
+}

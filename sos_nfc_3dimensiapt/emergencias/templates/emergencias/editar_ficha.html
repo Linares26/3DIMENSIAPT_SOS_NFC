@@ -1,0 +1,213 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Editar Ficha de {{ llavero.nombre_menor }} | 3DimensiaPT{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-slate-50 py-8 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-2xl mx-auto">
+
+        <!-- CABECERA DEL PANEL DE EDICIÓN -->
+        <div class="flex items-center justify-between mb-6">
+            <div>
+                <a href="{% url 'ficha_publica' uuid=llavero.id %}" 
+                   class="inline-flex items-center gap-1.5 text-sm font-semibold text-slate-500 hover:text-slate-800 transition mb-1">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+                    </svg>
+                    Volver a la vista pública
+                </a>
+                <h1 class="text-2xl font-black text-slate-900 tracking-tight">
+                    Editar Ficha de Emergencia
+                </h1>
+                <p class="text-sm text-slate-500">
+                    Llavero vinculado a <span class="font-bold text-slate-700">{{ request.user.username }}</span> (UUID: <code class="text-xs bg-slate-200 px-1 py-0.5 rounded">{{ llavero.id|slice:":8" }}...</code>)
+                </p>
+            </div>
+
+            <div class="text-right">
+                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold {% if llavero.esta_activo %}bg-emerald-100 text-emerald-800{% else %}bg-rose-100 text-rose-800{% endif %}">
+                    {% if llavero.esta_activo %}● Activo{% else %}○ Desactivado{% endif %}
+                </span>
+                <p class="text-[11px] text-slate-400 mt-1">{{ llavero.contador_escaneos }} escaneos</p>
+            </div>
+        </div>
+
+        <!-- MENSAJES DE ERROR O ÉXITO (DJANGO MESSAGES) -->
+        {% if messages %}
+            <div class="space-y-2 mb-6">
+                {% for message in messages %}
+                    <div class="p-4 rounded-xl text-sm font-medium {% if message.tags == 'error' %}bg-rose-50 text-rose-900 border border-rose-200{% else %}bg-emerald-50 text-emerald-900 border border-emerald-200{% endif %}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <!-- FORMULARIO DE EDICIÓN -->
+        <form method="POST" enctype="multipart/form-data" class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200/80 space-y-6">
+            {% csrf_token %}
+
+            <!-- SECCIÓN 1: DATOS DEL MENOR -->
+            <div>
+                <h2 class="text-base font-black text-slate-900 flex items-center gap-2 border-b border-slate-100 pb-3 mb-4">
+                    <span class="w-6 h-6 rounded-lg bg-rose-100 text-rose-600 flex items-center justify-center text-xs font-black">1</span>
+                    Datos del Niño / Niña
+                </h2>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+                            Nombre <span class="text-rose-600">*</span>
+                        </label>
+                        {{ form.nombre_menor }}
+                        {% if form.nombre_menor.errors %}
+                            <p class="text-xs text-rose-600 mt-1">{{ form.nombre_menor.errors.0 }}</p>
+                        {% endif %}
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+                            Apellidos <span class="text-rose-600">*</span>
+                        </label>
+                        {{ form.apellidos_menor }}
+                        {% if form.apellidos_menor.errors %}
+                            <p class="text-xs text-rose-600 mt-1">{{ form.apellidos_menor.errors.0 }}</p>
+                        {% endif %}
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+                            Fecha de Nacimiento
+                        </label>
+                        {{ form.fecha_nacimiento }}
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+                            Foto o Avatar
+                        </label>
+                        {{ form.foto }}
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECCIÓN 2: CONTACTOS DE EMERGENCIA SOS -->
+            <div>
+                <h2 class="text-base font-black text-slate-900 flex items-center gap-2 border-b border-slate-100 pb-3 mb-4">
+                    <span class="w-6 h-6 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center text-xs font-black">2</span>
+                    Contactos Telefónicos de Emergencia
+                </h2>
+
+                <!-- Contacto 1 -->
+                <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 mb-4 space-y-3">
+                    <p class="text-xs font-extrabold uppercase text-slate-500 tracking-wider">Contacto SOS Principal (Botón Gigante):</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        <div>
+                            <label class="block text-[11px] font-bold text-slate-600 mb-1">Nombre</label>
+                            {{ form.nombre_contacto_1 }}
+                        </div>
+                        <div>
+                            <label class="block text-[11px] font-bold text-slate-600 mb-1">Parentesco</label>
+                            {{ form.parentesco_contacto_1 }}
+                        </div>
+                        <div>
+                            <label class="block text-[11px] font-bold text-rose-600 mb-1">Teléfono SOS *</label>
+                            {{ form.telefono_contacto_1 }}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contacto 2 -->
+                <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-3">
+                    <p class="text-xs font-extrabold uppercase text-slate-500 tracking-wider">Contacto SOS Secundario (Opcional):</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        <div>
+                            <label class="block text-[11px] font-bold text-slate-600 mb-1">Nombre</label>
+                            {{ form.nombre_contacto_2 }}
+                        </div>
+                        <div>
+                            <label class="block text-[11px] font-bold text-slate-600 mb-1">Parentesco</label>
+                            {{ form.parentesco_contacto_2 }}
+                        </div>
+                        <div>
+                            <label class="block text-[11px] font-bold text-slate-600 mb-1">Teléfono</label>
+                            {{ form.telefono_contacto_2 }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECCIÓN 3: INFORMACIÓN MÉDICA Y ALERGIAS -->
+            <div>
+                <h2 class="text-base font-black text-slate-900 flex items-center gap-2 border-b border-slate-100 pb-3 mb-4">
+                    <span class="w-6 h-6 rounded-lg bg-amber-100 text-amber-600 flex items-center justify-center text-xs font-black">3</span>
+                    Ficha Médica y Alergias
+                </h2>
+
+                <div class="space-y-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+                                Grupo Sanguíneo
+                            </label>
+                            {{ form.grupo_sanguineo }}
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+                                Medicación de Urgencia (Ej. Epipen / Inhalador)
+                            </label>
+                            {{ form.medicacion_urgencia }}
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-amber-800 uppercase tracking-wider mb-1">
+                            Alergias Críticas (Se destacará en color rojo)
+                        </label>
+                        {{ form.alergias_graves }}
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+                            Enfermedades o Condiciones Médicas
+                        </label>
+                        {{ form.enfermedades_condiciones }}
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+                            Instrucciones u Observaciones Adicionales
+                        </label>
+                        {{ form.observaciones_medicas }}
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECCIÓN 4: ESTADO Y CONTROL -->
+            <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 flex items-center justify-between">
+                <div>
+                    <span class="font-bold text-slate-800 text-sm block">Habilitar Ficha Pública</span>
+                    <span class="text-xs text-slate-500">Desactívalo si el llavero se ha extraviado para ocultar los datos de emergencia.</span>
+                </div>
+                <div>
+                    {{ form.esta_activo }}
+                </div>
+            </div>
+
+            <!-- BOTONES DE ACCIÓN -->
+            <div class="flex items-center justify-end space-x-3 pt-4 border-t border-slate-100">
+                <a href="{% url 'ficha_publica' uuid=llavero.id %}" 
+                   class="px-5 py-3 rounded-xl border border-slate-300 text-slate-700 font-bold text-sm hover:bg-slate-50 transition">
+                    Cancelar
+                </a>
+                <button type="submit" 
+                        class="px-7 py-3 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-black text-sm shadow-lg shadow-rose-600/30 active:scale-95 transition">
+                    Guardar Cambios en Tiempo Real
+                </button>
+            </div>
+        </form>
+
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es" class="h-full bg-slate-50">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}3DimensiaPT | SOS NFC{% endblock %}</title>
+
+    <!-- Meta Tags -->
+    <meta name="theme-color" content="#e11d48">
+    <meta name="description" content="Sistema de Llaveros NFC de Emergencia Médica y Localización Infantil 3DimensiaPT">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+    {% block extra_head %}{% endblock %}
+</head>
+<body class="min-h-full flex flex-col justify-between text-slate-800 antialiased selection:bg-rose-500 selection:text-white">
+
+    <!-- BARRA DE NAVEGACIÓN SUPERIOR -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-40">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <a href="{% if user.is_authenticated %}{% url 'mis_llaveros' %}{% else %}{% url 'login' %}{% endif %}" class="flex items-center space-x-2.5">
+                <span class="w-9 h-9 rounded-xl bg-gradient-to-tr from-rose-600 to-rose-500 flex items-center justify-center text-white shadow-md shadow-rose-500/30">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                    </svg>
+                </span>
+                <span class="font-black text-slate-900 tracking-tight text-lg">3Dimensia<span class="text-rose-600">PT</span></span>
+                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-rose-50 text-rose-600 border border-rose-200">SOS NFC</span>
+            </a>
+
+            <nav class="flex items-center space-x-3 text-xs font-bold">
+                {% if user.is_authenticated %}
+                    <a href="{% url 'mis_llaveros' %}" class="px-3 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition">
+                        Mis Llaveros
+                    </a>
+                    <div class="h-4 w-px bg-slate-200"></div>
+                    <span class="text-slate-500 hidden sm:inline">{{ user.first_name|default:user.username }}</span>
+                    <a href="{% url 'logout' %}" class="px-3 py-1.5 rounded-lg bg-rose-50 text-rose-700 hover:bg-rose-100 border border-rose-200 transition">
+                        Salir
+                    </a>
+                {% else %}
+                    <a href="{% url 'login' %}" class="px-3.5 py-2 rounded-xl text-slate-700 hover:text-slate-900 transition">
+                        Iniciar Sesión
+                    </a>
+                    <a href="{% url 'registro' %}" class="px-3.5 py-2 rounded-xl bg-rose-600 hover:bg-rose-700 text-white shadow-sm shadow-rose-600/30 transition">
+                        Crear Cuenta
+                    </a>
+                {% endif %}
+            </nav>
+        </div>
+    </header>
+
+    <!-- MENSAJES FLASH GLOBALES -->
+    {% if messages %}
+        <div class="max-w-4xl mx-auto px-4 pt-4 w-full">
+            {% for message in messages %}
+                <div class="p-3.5 text-xs rounded-xl font-medium {% if message.tags == 'error' %}bg-rose-50 text-rose-800 border border-rose-200{% elif message.tags == 'success' %}bg-emerald-50 text-emerald-800 border border-emerald-200{% else %}bg-slate-100 text-slate-800 border border-slate-200{% endif %} mb-2 shadow-sm">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="flex-grow">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- PIE DE PÁGINA -->
+    <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-400">
+        <p>© 2026 3DimensiaPT - Sistema de Asistencia y Emergencias NFC para la Infancia.</p>
+    </footer>
+
+</body>
+</html>
