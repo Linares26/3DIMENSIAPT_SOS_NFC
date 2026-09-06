@@ -13,7 +13,6 @@ from django.core.wsgi import get_wsgi_application
 
 # Configurar rutas
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SECRET_PASS = os.environ.get('SECRET_PASS')
 if BASE_DIR not in sys.path:
     sys.path.append(BASE_DIR)
 
@@ -21,19 +20,25 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'sos_nfc_3dimensiapt.settings')
 
 application = get_wsgi_application()
 
-# --- MIGRACIONES Y SUPERUSUARIO AUTO-EJECUTABLES ---
-try:
-    from django.core.management import call_command
-    from django.contrib.auth import get_user_model
+# --- MIGRACIONES Y SUPERUSUARIO SEGURO ---
+SECRET_PASS = os.environ.get('SECRET_PASS')
 
-    # Ejecutar migraciones en /tmp/db.sqlite3
-    call_command('migrate', interactive=False)
+if SECRET_PASS:
+    try:
+        from django.core.management import call_command
+        from django.contrib.auth import get_user_model
 
-    # Crear superusuario automáticamente si no existe
-    User = get_user_model()
-    if not User.objects.filter(username='admin').exists():
-        User.objects.create_superuser('3dimensiapt_admin', '3dimensiapt@gmail.com', SECRET_PASS)
-except Exception as e:
-    print(f"Error en autoconfiguración de BD: {e}")
+        call_command('migrate', interactive=False)
+
+        User = get_user_model()
+        user, created = User.objects.get_or_create(
+            username='3dimensiapt_admin',
+            defaults={'email': '3dimensiapt@gmail.com', 'is_staff': True, 'is_superuser': True}
+        )
+        # Sincroniza la clave con la variable de Vercel sin guardarla en código
+        user.set_password(SECRET_PASS)
+        user.save()
+    except Exception as e:
+        print(f"Error en autoconfiguración de BD: {e}")
 
 app = application
