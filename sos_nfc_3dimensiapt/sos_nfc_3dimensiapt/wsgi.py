@@ -11,7 +11,7 @@ import os
 import sys
 from django.core.wsgi import get_wsgi_application
 
-# Agregar la carpeta del proyecto Django al path de Python
+# Configurar rutas
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 if BASE_DIR not in sys.path:
     sys.path.append(BASE_DIR)
@@ -20,5 +20,19 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'sos_nfc_3dimensiapt.settings')
 
 application = get_wsgi_application()
 
-# Punto de entrada para Vercel
+# --- MIGRACIONES Y SUPERUSUARIO AUTO-EJECUTABLES ---
+try:
+    from django.core.management import call_command
+    from django.contrib.auth import get_user_model
+
+    # Ejecutar migraciones en /tmp/db.sqlite3
+    call_command('migrate', interactive=False)
+
+    # Crear superusuario automáticamente si no existe
+    User = get_user_model()
+    if not User.objects.filter(username='admin').exists():
+        User.objects.create_superuser('3dimensiapt_admin', '3dimensiapt@gmail.com', 'Bambu93lab94')
+except Exception as e:
+    print(f"Error en autoconfiguración de BD: {e}")
+
 app = application
