@@ -26,7 +26,7 @@ class RegistroPadreForm(UserCreationForm):
         label="Nombre",
         widget=forms.TextInput(attrs={
             'class': 'w-full rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-slate-900 shadow-sm focus:border-rose-500 focus:outline-none focus:ring-2 focus:ring-rose-500/20 text-sm font-semibold',
-            'placeholder': 'Ej. Carlos'
+            'placeholder': 'Ej. José'
         })
     )
     last_name = forms.CharField(
@@ -35,7 +35,7 @@ class RegistroPadreForm(UserCreationForm):
         label="Apellidos",
         widget=forms.TextInput(attrs={
             'class': 'w-full rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-slate-900 shadow-sm focus:border-rose-500 focus:outline-none focus:ring-2 focus:ring-rose-500/20 text-sm font-semibold',
-            'placeholder': 'Ej. Martínez'
+            'placeholder': 'Ej. Pereira Silva'
         })
     )
     email = forms.EmailField(
@@ -43,12 +43,12 @@ class RegistroPadreForm(UserCreationForm):
         label="Correo Electrónico (para recuperación y alertas)",
         widget=forms.EmailInput(attrs={
             'class': 'w-full rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-slate-900 shadow-sm focus:border-rose-500 focus:outline-none focus:ring-2 focus:ring-rose-500/20 text-sm',
-            'placeholder': 'carlos@ejemplo.com'
+            'placeholder': 'jose@ejemplo.com'
         })
     )
     terminos_privacidad = forms.BooleanField(
         required=True,
-        label="Acepto los términos de custodia de datos médicos de emergencia RGPD/COPPA",
+        label="Aceito os termos relativos à conservação de dados médicos de emergência ao abrigo do RGPD/COPPA",
         widget=forms.CheckboxInput(attrs={
             'class': 'h-4 w-4 rounded border-slate-300 text-rose-600 focus:ring-rose-500 cursor-pointer'
         })
@@ -60,7 +60,7 @@ class RegistroPadreForm(UserCreationForm):
         widgets = {
             'username': forms.TextInput(attrs={
                 'class': 'w-full rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-slate-900 shadow-sm focus:border-rose-500 focus:outline-none focus:ring-2 focus:ring-rose-500/20 text-sm font-semibold',
-                'placeholder': 'carlos_padre'
+                'placeholder': 'jose_pai'
             }),
         }
 
@@ -71,13 +71,13 @@ class RegistroPadreForm(UserCreationForm):
             if fieldname in self.fields:
                 self.fields[fieldname].widget.attrs.update({
                     'class': 'w-full rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-slate-900 shadow-sm focus:border-rose-500 focus:outline-none focus:ring-2 focus:ring-rose-500/20 text-sm font-mono',
-                    'placeholder': 'Mínimo 8 caracteres'
+                    'placeholder': 'Mínimo de 8 caracteres'
                 })
 
     def clean_email(self):
         email = self.cleaned_data.get('email').strip().lower()
         if User.objects.filter(email=email).exists():
-            raise forms.ValidationError("Ya existe una cuenta registrada con este correo electrónico.")
+            raise forms.ValidationError("Já existe uma conta registada com este endereço de e-mail.")
         return email
 
 
@@ -90,11 +90,11 @@ class LoginFormPersonalizado(AuthenticationForm):
         label="Usuario o Email",
         widget=forms.TextInput(attrs={
             'class': 'w-full rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-slate-900 shadow-sm focus:border-rose-500 focus:outline-none focus:ring-2 focus:ring-rose-500/20 text-sm font-semibold',
-            'placeholder': 'carlos_padre o tu@correo.com'
+            'placeholder': 'jose_pai ou o teu email'
         })
     )
     password = forms.CharField(
-        label="Contraseña",
+        label="Palavra-passe",
         widget=forms.PasswordInput(attrs={
             'class': 'w-full rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-slate-900 shadow-sm focus:border-rose-500 focus:outline-none focus:ring-2 focus:ring-rose-500/20 text-sm font-mono',
             'placeholder': '••••••••'
@@ -105,10 +105,10 @@ class LoginFormPersonalizado(AuthenticationForm):
 class SolicitarRecuperacionPasswordForm(PasswordResetForm):
     """Formulario para solicitar enlace de recuperación de contraseña por email"""
     email = forms.EmailField(
-        label="Correo Electrónico",
+        label="Endereço de e-mail",
         widget=forms.EmailInput(attrs={
             'class': 'w-full rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-slate-900 shadow-sm focus:border-rose-500 focus:outline-none focus:ring-2 focus:ring-rose-500/20 text-sm',
-            'placeholder': 'ejemplo@correo.com'
+            'placeholder': 'exemplo@correo.com'
         })
     )
 
@@ -121,5 +121,5 @@ class NuevaPasswordForm(SetPasswordForm):
             if fieldname in self.fields:
                 self.fields[fieldname].widget.attrs.update({
                     'class': 'w-full rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-slate-900 shadow-sm focus:border-rose-500 focus:outline-none focus:ring-2 focus:ring-rose-500/20 text-sm font-mono',
-                    'placeholder': 'Nueva contraseña segura'
+                    'placeholder': 'Nova palavra-passe segura'
                 })

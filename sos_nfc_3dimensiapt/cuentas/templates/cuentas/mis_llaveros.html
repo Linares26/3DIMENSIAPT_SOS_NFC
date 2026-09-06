@@ -1,31 +1,31 @@
 {% extends "base.html" %}
 
-{% block title %}Mis Llaveros NFC | 3DimensiaPT{% endblock %}
+{% block title %}Os meus Porta-chaves NFC | 3DimensiaPT{% endblock %}
 
 {% block content %}
 <div class="max-w-4xl mx-auto py-8 px-4 sm:px-6">
     
-    <!-- CABECERA DEL PANEL -->
+    <!-- CABECERA DO PAINEL -->
     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-200">
         <div>
             <span class="text-xs font-black uppercase text-rose-600 bg-rose-50 px-2.5 py-1 rounded-full border border-rose-200">
-                Panel Familiar
+                Painel Familiar
             </span>
-            <h1 class="text-2xl font-black text-slate-900 mt-1">Llaveros NFC de Emergencia</h1>
+            <h1 class="text-2xl font-black text-slate-900 mt-1">Porta-chaves NFC de Emergência</h1>
             <p class="text-xs text-slate-500">Tutor: <strong>{{ request.user.get_full_name|default:request.user.username }}</strong> ({{ request.user.email }})</p>
         </div>
 
         <div class="flex items-center gap-2">
             <a href="{% url 'password_change' %}" class="px-3.5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl text-xs transition">
-                Cambiar Contraseña
+                Mudar senha
             </a>
             <a href="{% url 'logout' %}" class="px-3.5 py-2 bg-rose-50 hover:bg-rose-100 text-rose-700 font-bold rounded-xl text-xs border border-rose-200 transition">
-                Cerrar Sesión
+                Sair
             </a>
         </div>
     </div>
 
-    <!-- LISTADO DE LLAVEROS -->
+    <!-- LISTA DE PORTA-CHAVES -->
     <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
         {% for llavero in llaveros %}
             <div class="bg-white rounded-3xl p-5 border border-slate-200 shadow-sm hover:shadow-md transition space-y-4">
@@ -47,11 +47,11 @@
                     </div>
 
                     <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold {% if llavero.esta_activo %}bg-emerald-100 text-emerald-800{% else %}bg-rose-100 text-rose-800{% endif %}">
-                        {% if llavero.esta_activo %}● Activo{% else %}○ Inactivo{% endif %}
+                        {% if llavero.esta_activo %}● Ativo{% else %}○ Inativo{% endif %}
                     </span>
                 </div>
 
-                <!-- Resumen de emergencias -->
+                <!-- Resumo de emergências -->
                 <div class="bg-slate-50 rounded-2xl p-3 text-xs space-y-1 text-slate-600">
                     <p>📞 <strong>Contacto SOS:</strong> {{ llavero.nombre_contacto_1 }} ({{ llavero.telefono_contacto_1 }})</p>
                     {% if llavero.alergias_graves %}
@@ -65,7 +65,7 @@
                         Ver Ficha NFC ↗
                     </a>
                     <a href="{% url 'editar_ficha' uuid=llavero.id %}" class="py-2 px-3 text-center bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs rounded-xl shadow-sm shadow-rose-600/30 transition">
-                        Editar Datos ✎
+                        Editar dados ✎
                     </a>
                 </div>
             </div>
@@ -76,9 +76,9 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                 </div>
-                <h3 class="text-sm font-bold text-slate-800">No tienes llaveros vinculados aún</h3>
+                <h3 class="text-sm font-bold text-slate-800">Não tem porta-chaves vinculados ainda</h3>
                 <p class="text-xs text-slate-500 mt-1 max-w-sm mx-auto">
-                    Cuando adquieras tu llavero físico 3DimensiaPT, escanea su código o vincúlalo desde el administrador para gestionar su ficha médica.
+                    Quando adquirir o seu porta-chaves físico 3DimensiaPT, escaneie o seu código ou vincule-o a partir do administrador para gerenciar a sua ficha médica.
                 </p>
             </div>
         {% endfor %}

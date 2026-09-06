@@ -25,7 +25,7 @@ class LlaveroNFC(models.Model):
         AB_NEGATIVO = 'AB-', 'AB Negativo (AB-)'
         O_POSITIVO = 'O+', 'O Positivo (O+)'
         O_NEGATIVO = 'O-', 'O Negativo (O-)'
-        DESCONOCIDO = 'DESC', 'Desconocido / No especificado'
+        DESCONOCIDO = 'DESC', 'Desconhecido / Não especificado'
 
     # 1. IDENTIFICADOR CRIPTOGRÁFICO ÚNICO (Para la URL del NFC)
     # Ejemplo: https://3dimensiapt.com/nfc/550e8400-e29b-41d4-a716-446655440000/
@@ -34,7 +34,7 @@ class LlaveroNFC(models.Model):
         default=uuid.uuid4,
         editable=False,
         unique=True,
-        help_text="Identificador único no predecible grabado en la memoria del chip NFC."
+        help_text="Identificador único e não previsível gravado na memória do chip NFC."
     )
 
     # 2. PROPIETARIO / TUTOR LEGAL (Usuario estándar de Django)
@@ -42,76 +42,76 @@ class LlaveroNFC(models.Model):
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
         related_name='llaveros_nfc',
-        verbose_name="Padre/Madre o Tutor",
-        help_text="Usuario registrado con permisos exclusivos de edición para esta ficha."
+        verbose_name="Pai/Mãe ou Tutor",
+        help_text="Usuário registrado com permissões exclusivas de edição para esta ficha."
     )
 
     # 3. DATOS BÁSICOS DEL MENOR
     nombre_menor = models.CharField(
         max_length=60,
-        verbose_name="Nombre del niño/a",
-        help_text="Ej: Lucas"
+        verbose_name="Nome do Menino/a",
+        help_text="Ex: Tiago"
     )
     apellidos_menor = models.CharField(
         max_length=100,
-        verbose_name="Apellidos del niño/a",
-        help_text="Ej: Martínez Gómez"
+        verbose_name="Apellidos do Menino/a",
+        help_text="Ex: Pereira Silva"
     )
     fecha_nacimiento = models.DateField(
         null=True,
         blank=True,
-        verbose_name="Fecha de Nacimiento"
+        verbose_name="Data de nascimento"
     )
     foto = models.ImageField(
         upload_to='llaveros/avatares/',
         null=True,
         blank=True,
-        verbose_name="Foto / Avatar reciente",
-        help_text="Foto clara del rostro para identificación rápida en caso de pérdida."
+        verbose_name="Foto do Menino/a para identificação",
+        help_text="Foto clara do rosto para identificação rápida em caso de perda."
     )
 
-    # 4. CONTACTOS DE EMERGENCIA (Con validación de formato telefónico)
+    # 4. CONTACTOS DE EMERGÊNCIA (Con validación de formato telefónico)
     validador_telefono = RegexValidator(
         regex=r'^\+?1?\d{9,15}$',
-        message="El teléfono debe tener formato internacional válido (ej: +34612345678 o 612345678)."
+        message="O número de telefone deve ter um formato internacional válido (por exemplo: +351912345678 ou 912345678)."
     )
 
     nombre_contacto_1 = models.CharField(
         max_length=80,
-        verbose_name="Nombre Contacto Principal",
-        help_text="Ej: Mamá (Laura Gómez)"
+        verbose_name="Nome do Contato de Emergência",
+        help_text="Ex: Mãe (Laura Pereira)"
     )
     parentesco_contacto_1 = models.CharField(
         max_length=40,
-        default="Madre",
-        verbose_name="Parentesco Contacto 1"
+        default="Mãe",
+        verbose_name="Parentesco do Contato 1"
     )
     telefono_contacto_1 = models.CharField(
         validators=[validador_telefono],
         max_length=20,
-        verbose_name="Teléfono SOS Principal",
-        help_text="Número al que llamará el botón principal de emergencia."
+        verbose_name="Telefone de Emergência",
+        help_text="Número ao qual o botão de emergência principal ligará."
     )
 
     nombre_contacto_2 = models.CharField(
         max_length=80,
         blank=True,
         null=True,
-        verbose_name="Nombre Contacto Secundario",
-        help_text="Ej: Papá (Carlos Martínez) o Abuelos"
+        verbose_name="Nome do Contato de Emergência 2",
+        help_text="Ex: Pai (Carlos Pereira) ou Avós"
     )
     parentesco_contacto_2 = models.CharField(
         max_length=40,
         blank=True,
         null=True,
-        verbose_name="Parentesco Contacto 2"
+        verbose_name="Parentesco do Contato 2"
     )
     telefono_contacto_2 = models.CharField(
         validators=[validador_telefono],
         max_length=20,
         blank=True,
         null=True,
-        verbose_name="Teléfono SOS Secundario"
+        verbose_name="Telefone de Emergência 2"
     )
 
     # 5. INFORMACIÓN MÉDICA CRÍTICA PARA URGENCIAS
@@ -124,23 +124,23 @@ class LlaveroNFC(models.Model):
     alergias_graves = models.TextField(
         blank=True,
         verbose_name="Alergias Críticas",
-        help_text="Alergias a alimentos, medicamentos, picaduras (ej: Cacahuetes, Penicilina, Látex)."
+        help_text="Alergias a alimentos, medicamentos e picadas (por exemplo: amendoins, penicilina, látex)."
     )
     enfermedades_condiciones = models.TextField(
         blank=True,
-        verbose_name="Condiciones Médicas",
-        help_text="Ej: Asma, Diabetes Tipo 1, Epilepsia, Autismo / TEA (no verbal)."
+        verbose_name="Condições Médicas",
+        help_text="Ex: Asma, Diabetes Tipo 1, Epilepsia, Autismo / TEA (não verbal)."
     )
     medicacion_urgencia = models.CharField(
         max_length=255,
         blank=True,
-        verbose_name="Medicación de Urgencia / Ubicación",
-        help_text="Ej: Lleva Autoinyector de Adrenalina (Epipen) en el bolsillo lateral de la mochila."
+        verbose_name="Medicação de Urgência / Localização",
+        help_text="Ex.: Leva o autoinjetor de adrenalina (Epipen) no bolso lateral da mochila."
     )
     observaciones_medicas = models.TextField(
         blank=True,
-        verbose_name="Instrucciones Adicionales",
-        help_text="Cualquier indicación crucial para los sanitarios o quien encuentre al menor."
+        verbose_name="Instruções Adicionais",
+        help_text="Qualquer indicação crucial para os socorristas ou quem encontrar a criança."
     )
 
     # 6. METADATOS TÉCNICOS Y HARDWARE IOT
@@ -148,39 +148,39 @@ class LlaveroNFC(models.Model):
         max_length=50,
         blank=True,
         null=True,
-        verbose_name="UID del Chip NFC Físico",
-        help_text="Identificador de fábrica del chip NTAG213/215/216 (opcional para control de stock)."
+        verbose_name="UID do Chip NFC Físico",
+        help_text="Identificador de fábrica do chip NTAG213/215/216 (opcional para controle de estoque)."
     )
     esta_activo = models.BooleanField(
         default=True,
-        verbose_name="Llavero Activo",
-        help_text="Si se desactiva, la ficha pública mostrará un aviso de llavero inhabilitado."
+        verbose_name="Porta-chaves Ativo",
+        help_text="Se desativar, a ficha pública mostrará um aviso de porta-chaves desabilitado."
     )
     contador_escaneos = models.PositiveIntegerField(
         default=0,
-        verbose_name="Total de Escaneos NFC"
+        verbose_name="Total de Escaneamentos NFC"
     )
     ultimo_escaneo = models.DateTimeField(
         null=True,
         blank=True,
-        verbose_name="Último Escaneo Registrado"
+        verbose_name="Último Escaneamento Registrado"
     )
     
     fecha_creacion = models.DateTimeField(auto_now_add=True)
     fecha_actualizacion = models.DateTimeField(auto_now=True)
 
     class Meta:
-        verbose_name = "Llavero NFC"
-        verbose_name_plural = "Llaveros NFC"
+        verbose_name = "Porta-chaves NFC"
+        verbose_name_plural = "Porta-chaves NFC"
         ordering = ['-fecha_creacion']
 
     def __str__(self):
-        return f"Llavero de {self.nombre_menor} {self.apellidos_menor} (UUID: {str(self.id)[:8]}...)"
+        return f"Porta-chaves de {self.nombre_menor} {self.apellidos_menor} (UUID: {str(self.id)[:8]}...)"
 
     def get_absolute_url(self):
-        """Retorna la URL pública que se graba físicamente en el chip NFC"""
+        """Devolve a URL pública que está fisicamente gravada no chip NFC"""
         return reverse('ficha_publica', kwargs={'uuid': self.id})
 
     def get_edit_url(self):
-        """Retorna la URL de edición protegida para los padres"""
+        """Devolve a URL de edição protegida para os pais"""
         return reverse('editar_ficha', kwargs={'uuid': self.id})

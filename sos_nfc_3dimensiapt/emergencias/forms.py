@@ -8,8 +8,8 @@ from .models import LlaveroNFC
 
 class FichaEmergenciaForm(forms.ModelForm):
     """
-    Formulario optimizado para padres con estilos nativos de Tailwind CSS
-    y validación para actualización rápida en dispositivos móviles.
+    Formulário otimizado para pais com estilos nativos do Tailwind CSS
+    e validação para uma atualização rápida em dispositivos móveis.
     """
     
     class Meta:
@@ -36,11 +36,11 @@ class FichaEmergenciaForm(forms.ModelForm):
         widgets = {
             'nombre_menor': forms.TextInput(attrs={
                 'class': 'w-full rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-slate-900 shadow-sm focus:border-rose-500 focus:outline-none focus:ring-2 focus:ring-rose-500/20 text-sm font-semibold',
-                'placeholder': 'Ej. Lucas'
+                'placeholder': 'Ej. Tiago'
             }),
             'apellidos_menor': forms.TextInput(attrs={
                 'class': 'w-full rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-slate-900 shadow-sm focus:border-rose-500 focus:outline-none focus:ring-2 focus:ring-rose-500/20 text-sm font-semibold',
-                'placeholder': 'Ej. Martínez Gómez'
+                'placeholder': 'Ej. Pereira Silva'
             }),
             'fecha_nacimiento': forms.DateInput(attrs={
                 'type': 'date',
@@ -58,25 +58,25 @@ class FichaEmergenciaForm(forms.ModelForm):
             }),
             'parentesco_contacto_1': forms.TextInput(attrs={
                 'class': 'w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-slate-900 shadow-sm focus:border-rose-500 focus:outline-none text-xs',
-                'placeholder': 'Ej. Madre'
+                'placeholder': 'Ej. Mãe'
             }),
             'telefono_contacto_1': forms.TextInput(attrs={
                 'class': 'w-full rounded-xl border border-rose-300 bg-rose-50/40 px-3 py-2 text-slate-900 font-mono font-bold shadow-sm focus:border-rose-500 focus:outline-none text-xs',
-                'placeholder': '+34 600 000 000'
+                'placeholder': '+351 900 000 000'
             }),
 
             # Contacto Secundario SOS
             'nombre_contacto_2': forms.TextInput(attrs={
                 'class': 'w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-slate-900 shadow-sm focus:border-rose-500 focus:outline-none text-xs font-semibold',
-                'placeholder': 'Ej. Carlos Martínez (Papá)'
+                'placeholder': 'Ej. Tiago Pereira (Pai)'
             }),
             'parentesco_contacto_2': forms.TextInput(attrs={
                 'class': 'w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-slate-900 shadow-sm focus:border-rose-500 focus:outline-none text-xs',
-                'placeholder': 'Ej. Padre / Abuelo'
+                'placeholder': 'Ej. Pai / Avô'
             }),
             'telefono_contacto_2': forms.TextInput(attrs={
                 'class': 'w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-slate-900 font-mono shadow-sm focus:border-rose-500 focus:outline-none text-xs',
-                'placeholder': '+34 611 111 111'
+                'placeholder': '+351 930 000 000'
             }),
 
             # Información Médica
@@ -86,21 +86,21 @@ class FichaEmergenciaForm(forms.ModelForm):
             'alergias_graves': forms.Textarea(attrs={
                 'rows': 2,
                 'class': 'w-full rounded-xl border border-rose-300 bg-rose-50/30 p-3 text-slate-900 shadow-sm focus:border-rose-500 focus:outline-none text-xs font-bold',
-                'placeholder': 'Ej. ALERGIA SEVERA A FRUTOS SECOS (Cacahuetes, Nueces) y PENICILINA.'
+                'placeholder': 'Ex.: ALERGIA GRAVE A FRUTOS SECOS (amendoins, nozes) e PENICILINA.'
             }),
             'enfermedades_condiciones': forms.Textarea(attrs={
                 'rows': 2,
                 'class': 'w-full rounded-xl border border-slate-300 bg-white p-3 text-slate-900 shadow-sm focus:border-rose-500 focus:outline-none text-xs',
-                'placeholder': 'Ej. Asma infantil con broncoespasmos estacionales.'
+                'placeholder': 'Ex.: Asma infantil com broncoespasmos estacionais.'
             }),
             'medicacion_urgencia': forms.TextInput(attrs={
                 'class': 'w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-slate-900 shadow-sm focus:border-rose-500 focus:outline-none text-xs font-semibold',
-                'placeholder': 'Ej. Ventolín / Epipen en la mochila escolar'
+                'placeholder': 'Ex.: Ventolín / Epipen na mochila escolar'
             }),
             'observaciones_medicas': forms.Textarea(attrs={
                 'rows': 2,
                 'class': 'w-full rounded-xl border border-slate-300 bg-white p-3 text-slate-900 shadow-sm focus:border-rose-500 focus:outline-none text-xs',
-                'placeholder': 'Cualquier detalle extra que deba saber un médico o policía.'
+                'placeholder': 'Qualquer detalhe extra que um médico ou policial precise saber.'
             }),
             'esta_activo': forms.CheckboxInput(attrs={
                 'class': 'h-5 w-5 rounded border-slate-300 text-rose-600 focus:ring-rose-500 cursor-pointer'
@@ -110,5 +110,5 @@ class FichaEmergenciaForm(forms.ModelForm):
     def clean_telefono_contacto_1(self):
         tel = self.cleaned_data.get('telefono_contacto_1')
         if not tel:
-            raise forms.ValidationError("El teléfono de emergencia principal es obligatorio.")
+            raise forms.ValidationError("O telefone de emergência principal é obrigatório.")
         return tel.strip().replace(" ", "")

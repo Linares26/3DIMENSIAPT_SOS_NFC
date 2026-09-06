@@ -5,6 +5,26 @@ Archivo: sos_nfc_3dimensiapt/settings.py
 import os
 from pathlib import Path
 import dj_database_url
+from django.utils.translation import gettext_lazy as _
+
+USE_I18N = True
+USE_L10N = True
+USE_TZ = True
+
+# Idioma por defecto
+LANGUAGE_CODE = 'pt-pt'
+
+# Idiomas soportados
+LANGUAGES = [
+    ('es', _('Español')),
+    ('pt-pt', _('Português')),
+    ('en', _('English')),
+]
+
+# Directorio donde se guardarán los archivos de traducción
+LOCALE_PATHS = [
+    BASE_DIR / 'locale',
+]
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -29,6 +49,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',

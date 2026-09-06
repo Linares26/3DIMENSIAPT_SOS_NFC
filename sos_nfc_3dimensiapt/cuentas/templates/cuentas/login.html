@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Iniciar Sesión | 3DimensiaPT{% endblock %}
+{% block title %}Iniciar sessão | 3DimensiaPT{% endblock %}
 
 {% block content %}
 <div class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-slate-50">
@@ -12,8 +12,8 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                 </svg>
             </span>
-            <h2 class="text-2xl font-black text-slate-900 tracking-tight">Acceso Padres y Tutores</h2>
-            <p class="text-xs text-slate-500 mt-1">Identifícate para editar la ficha de emergencia de tu hijo.</p>
+            <h2 class="text-2xl font-black text-slate-900 tracking-tight">Acesso para pais e tutores</h2>
+            <p class="text-xs text-slate-500 mt-1">Inicie sessão para editar a ficha de emergência do seu filho.</p>
         </div>
 
         {% if messages %}
@@ -29,15 +29,15 @@
             <input type="hidden" name="next" value="{{ next }}">
 
             <div>
-                <label class="block text-[11px] font-bold text-slate-600 uppercase mb-1">Usuario o Email</label>
+                <label class="block text-[11px] font-bold text-slate-600 uppercase mb-1">Usuário ou E-mail</label>
                 {{ form.username }}
             </div>
 
             <div>
                 <div class="flex items-center justify-between mb-1">
-                    <label class="block text-[11px] font-bold text-slate-600 uppercase">Contraseña</label>
+                    <label class="block text-[11px] font-bold text-slate-600 uppercase">Senha</label>
                     <a href="{% url 'password_reset' %}" class="text-[11px] font-bold text-rose-600 hover:underline">
-                        ¿Olvidaste tu contraseña?
+                        Esqueceu a sua senha?
                     </a>
                 </div>
                 {{ form.password }}
@@ -45,18 +45,18 @@
 
             {% if next %}
                 <div class="p-2.5 bg-amber-50 rounded-xl border border-amber-200 text-xs text-amber-800">
-                    🔔 Redirección activa: Tras identificarte volverás a la página que estabas consultando.
+                    🔔 Redirecionamento ativo: Após identificação, voltará à página que estava consultando.
                 </div>
             {% endif %}
 
             <button type="submit" class="w-full py-3 bg-rose-600 hover:bg-rose-700 text-white font-black text-sm rounded-xl shadow-lg shadow-rose-600/30 transition active:scale-95">
-                Iniciar Sesión
+                Iniciar sessão
             </button>
         </form>
 
         <p class="text-center text-xs text-slate-500">
-            ¿No tienes cuenta de tutor? 
-            <a href="{% url 'registro' %}" class="font-bold text-rose-600 hover:underline">Regístrate gratis</a>
+            Não tem uma conta de tutor? 
+            <a href="{% url 'registro' %}" class="font-bold text-rose-600 hover:underline">Registe-se gratuitamente</a>
         </p>
 
     </div>

@@ -1,5 +1,6 @@
+{% load i18n %}
 <!DOCTYPE html>
-<html lang="es" class="h-full bg-slate-50">
+<html lang="{{ LANGUAGE_CODE }}" class="h-full bg-slate-50">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -40,19 +41,19 @@
             <nav class="flex items-center space-x-3 text-xs font-bold">
                 {% if user.is_authenticated %}
                     <a href="{% url 'mis_llaveros' %}" class="px-3 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition">
-                        Mis Llaveros
+                        Meus porta-chaves
                     </a>
                     <div class="h-4 w-px bg-slate-200"></div>
                     <span class="text-slate-500 hidden sm:inline">{{ user.first_name|default:user.username }}</span>
                     <a href="{% url 'logout' %}" class="px-3 py-1.5 rounded-lg bg-rose-50 text-rose-700 hover:bg-rose-100 border border-rose-200 transition">
-                        Salir
+                        Sair
                     </a>
                 {% else %}
                     <a href="{% url 'login' %}" class="px-3.5 py-2 rounded-xl text-slate-700 hover:text-slate-900 transition">
-                        Iniciar Sesión
+                        Entrar
                     </a>
                     <a href="{% url 'registro' %}" class="px-3.5 py-2 rounded-xl bg-rose-600 hover:bg-rose-700 text-white shadow-sm shadow-rose-600/30 transition">
-                        Crear Cuenta
+                        Criar Conta
                     </a>
                 {% endif %}
             </nav>
@@ -77,7 +78,7 @@
 
     <!-- PIE DE PÁGINA -->
     <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-400">
-        <p>© 2026 3DimensiaPT - Sistema de Asistencia y Emergencias NFC para la Infancia.</p>
+        <p>© 2026 3DimensiaPT - Sistema de Assistência e Emergência NFC para a Infância.</p>
     </footer>
 
 </body>

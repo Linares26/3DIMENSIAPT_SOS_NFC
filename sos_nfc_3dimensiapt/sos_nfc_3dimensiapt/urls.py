@@ -7,9 +7,13 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic import RedirectView
-
+from django.conf.urls.i18n import i18n_patterns
 
 urlpatterns = [
+    path('i18n/', include('django.conf.urls.i18n')),  # Ruta para cambiar de idioma
+]
+
+urlpatterns += i18n_patterns(
     path('admin/', admin.site.urls),
 
     # Redirección de la raíz al panel de llaveros (o login si no está autenticado)
@@ -20,7 +24,8 @@ urlpatterns = [
 
     # Rutas públicas y de edición de fichas NFC
     path('', include('emergencias.urls')),
-]
+    prefix_default_language=False,  # Si es 'False', la versión por defecto ('es') no llevará prefijo /es/
+)
 
 # Servir archivos estáticos y multimedia en entorno de desarrollo
 if settings.DEBUG:
