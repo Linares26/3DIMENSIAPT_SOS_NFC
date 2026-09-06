@@ -10,6 +10,8 @@ pillow = "*"
 pylint = "*"
 pylint-django = "*"
 pylint-celery = "*"
+dj-database-url = "*"
+whitenoise = "*"
 
 [dev-packages]
 
