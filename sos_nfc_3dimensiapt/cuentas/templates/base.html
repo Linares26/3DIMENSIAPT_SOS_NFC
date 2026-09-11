@@ -1,4 +1,20 @@
 {% load i18n %}
+<form action="{% url 'set_language' %}" method="post" class="inline-block">
+    {% csrf_token %}
+    <!-- Al no pasar 'next', Django redirige automáticamente reconvirtiendo el prefijo de la URL actual -->
+    <select name="language" onchange="this.form.submit()" class="bg-white border text-gray-700 py-1 px-2 rounded leading-tight focus:outline-none">
+        {% get_current_language as CURRENT_LANG %}
+        {% get_available_languages as LANGUAGES %}
+        {% get_language_info_list for LANGUAGES as languages %}
+        {% for lang in languages %}
+            <option value="{{ lang.code }}" {% if lang.code == CURRENT_LANG %}selected{% endif %}>
+                {% if lang.code == 'es' %}🇪🇸 ES{% endif %}
+                {% if lang.code == 'pt-pt' %}🇵🇹 PT{% endif %}
+                {% if lang.code == 'en' %}🇬🇧 EN{% endif %}
+            </option>
+        {% endfor %}
+    </select>
+</form>
 <!DOCTYPE html>
 <html lang="{{ LANGUAGE_CODE }}" class="h-full bg-slate-50">
 <head>
@@ -59,25 +75,7 @@
             </nav>
         </div>
 
-        <!-- SELECTOR DE IDIOMAS DENTRO DEL BASE.HTML -->
-        <div class="language-selector">
-            <form action="{% url 'set_language' %}" method="post">
-                {% csrf_token %}
-                <input name="next" type="hidden" value="{{ request.path }}">
-                <select name="language" onchange="this.form.submit()" style="padding: 5px; border-radius: 5px;">
-                    {% get_current_language as CURRENT_LANG %}
-                    {% get_available_languages as LANGUAGES %}
-                    {% get_language_info_list for LANGUAGES as languages %}
-                    {% for lang in languages %}
-                        <option value="{{ lang.code }}" {% if lang.code == CURRENT_LANG %}selected{% endif %}>
-                            {% if lang.code == 'pt-pt' %}🇵🇹 Português{% endif %}
-                            {% if lang.code == 'es' %}🇪🇸 Español{% endif %}
-                            {% if lang.code == 'en' %}🇬🇧 English{% endif %}
-                        </option>
-                    {% endfor %}
-                </select>
-            </form>
-        </div>
+
     </header>
 
     <!-- MENSAJES FLASH GLOBALES -->
