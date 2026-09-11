@@ -14,11 +14,11 @@ USE_L10N = True
 USE_TZ = True
 
 # Idioma por defecto
-LANGUAGE_CODE = 'pt-pt'
+LANGUAGE_CODE = 'pt_PT'
 
 # Idiomas soportados
 LANGUAGES = [
-    ('pt-pt', _('Português')),
+    ('pt_PT', _('Português')),
     ('es', _('Español')),
     ('en', _('English')),
 ]
@@ -48,6 +48,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware', # 0. WhiteNoise primero
     'django.contrib.sessions.middleware.SessionMiddleware', # 1. Sesiones primero
     'django.middleware.locale.LocaleMiddleware',           # 2. Locale AQUÍ
     'django.middleware.common.CommonMiddleware',           # 3. Common después
@@ -55,7 +56,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    
 ]
 
 ROOT_URLCONF = 'sos_nfc_3dimensiapt.urls'
