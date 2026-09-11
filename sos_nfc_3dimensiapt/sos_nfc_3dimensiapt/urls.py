@@ -24,7 +24,7 @@ urlpatterns += i18n_patterns(
 
     # Rutas públicas y de edición de fichas NFC
     path('', include('emergencias.urls')),
-    prefix_default_language=False,  # Si es 'False', la versión por defecto ('es') no llevará prefijo /es/
+    prefix_default_language=True,  # Si es 'False', la versión por defecto ('es') no llevará prefijo /es/
 )
 
 # Servir archivos estáticos y multimedia en entorno de desarrollo
