@@ -14,11 +14,11 @@ USE_L10N = True
 USE_TZ = True
 
 # Idioma por defecto
-LANGUAGE_CODE = 'pt_PT'
+LANGUAGE_CODE = 'pt_pt'
 
 # Idiomas soportados
 LANGUAGES = [
-    ('pt_PT', _('Português')),
+    ('pt_pt', _('Português')),
     ('es', _('Español')),
     ('en', _('English')),
 ]
