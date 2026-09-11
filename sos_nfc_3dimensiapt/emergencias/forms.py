@@ -36,11 +36,11 @@ class FichaEmergenciaForm(forms.ModelForm):
         widgets = {
             'nombre_menor': forms.TextInput(attrs={
                 'class': 'w-full rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-slate-900 shadow-sm focus:border-rose-500 focus:outline-none focus:ring-2 focus:ring-rose-500/20 text-sm font-semibold',
-                'placeholder': 'Ej. Tiago'
+                'placeholder': 'Ex: Tiago'
             }),
             'apellidos_menor': forms.TextInput(attrs={
                 'class': 'w-full rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-slate-900 shadow-sm focus:border-rose-500 focus:outline-none focus:ring-2 focus:ring-rose-500/20 text-sm font-semibold',
-                'placeholder': 'Ej. Pereira Silva'
+                'placeholder': 'Ex: Pereira Silva'
             }),
             'fecha_nacimiento': forms.DateInput(attrs={
                 'type': 'date',
@@ -54,11 +54,11 @@ class FichaEmergenciaForm(forms.ModelForm):
             # Contacto Principal SOS
             'nombre_contacto_1': forms.TextInput(attrs={
                 'class': 'w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-slate-900 shadow-sm focus:border-rose-500 focus:outline-none text-xs font-semibold',
-                'placeholder': 'Ej. Laura Gómez (Mamá)'
+                'placeholder': 'Ex: Laura Gomes (Mãe)'
             }),
             'parentesco_contacto_1': forms.TextInput(attrs={
                 'class': 'w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-slate-900 shadow-sm focus:border-rose-500 focus:outline-none text-xs',
-                'placeholder': 'Ej. Mãe'
+                'placeholder': 'Ex: Mãe'
             }),
             'telefono_contacto_1': forms.TextInput(attrs={
                 'class': 'w-full rounded-xl border border-rose-300 bg-rose-50/40 px-3 py-2 text-slate-900 font-mono font-bold shadow-sm focus:border-rose-500 focus:outline-none text-xs',
@@ -68,11 +68,11 @@ class FichaEmergenciaForm(forms.ModelForm):
             # Contacto Secundario SOS
             'nombre_contacto_2': forms.TextInput(attrs={
                 'class': 'w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-slate-900 shadow-sm focus:border-rose-500 focus:outline-none text-xs font-semibold',
-                'placeholder': 'Ej. Tiago Pereira (Pai)'
+                'placeholder': 'Ex: Tiago Pereira (Pai)'
             }),
             'parentesco_contacto_2': forms.TextInput(attrs={
                 'class': 'w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-slate-900 shadow-sm focus:border-rose-500 focus:outline-none text-xs',
-                'placeholder': 'Ej. Pai / Avô'
+                'placeholder': 'Ex: Pai / Avô'
             }),
             'telefono_contacto_2': forms.TextInput(attrs={
                 'class': 'w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-slate-900 font-mono shadow-sm focus:border-rose-500 focus:outline-none text-xs',

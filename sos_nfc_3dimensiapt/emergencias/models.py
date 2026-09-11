@@ -11,8 +11,8 @@ from django.core.validators import RegexValidator
 
 class LlaveroNFC(models.Model):
     """
-    Modelo representativo de cada llavero físico 3D con chip NFC integrado.
-    Utiliza UUID v4 para generar URLs no secuenciales e invulnerables a escaneo por fuerza bruta.
+    Modelo representativo de cada porta-chaves físico 3D com chip NFC integrado.
+    Utiliza UUID v4 para gerar URLs não sequenciais e invulneráveis a escaneos por força bruta.
     """
     
     # Opciones de grupo sanguíneo

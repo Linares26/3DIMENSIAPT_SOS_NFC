@@ -67,7 +67,7 @@ def editar_ficha_view(request, uuid):
 
     # Validación de propiedad estricta
     if llavero.padre != request.user:
-        raise PermissionDenied("No tienes autorización para modificar este llavero de emergencia.")
+        raise PermissionDenied("Não tem autorização para modificar este porta-chaves de emergência.")
 
     if request.method == 'POST':
         form = FichaEmergenciaForm(request.POST, request.FILES, instance=llavero)
@@ -75,13 +75,13 @@ def editar_ficha_view(request, uuid):
             form.save()
             messages.success(
                 request, 
-                f"✅ La ficha de emergencia de {llavero.nombre_menor} ha sido actualizada con éxito."
+                f"✅ A ficha de emergência de {llavero.nombre_menor} foi atualizada com sucesso."
             )
             return redirect('ficha_publica', uuid=llavero.id)
         else:
             messages.error(
                 request, 
-                "⚠️ Por favor, corrige los errores del formulario."
+                "⚠️ Por favor, corrija os erros do formulário."
             )
     else:
         form = FichaEmergenciaForm(instance=llavero)

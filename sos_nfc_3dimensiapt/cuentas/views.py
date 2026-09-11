@@ -28,14 +28,14 @@ def registro_padre_view(request):
             login(request, user)
             messages.success(
                 request,
-                f"¡Bienvenido/a {user.first_name}! Tu cuenta de tutor ha sido creada con éxito."
+                f"Bem-vindo/a {user.first_name}! A sua conta de tutor foi criada com sucesso."
             )
             next_url = request.GET.get('next') or request.POST.get('next')
             if next_url:
                 return redirect(next_url)
             return redirect('mis_llaveros')
         else:
-            messages.error(request, "Por favor revisa los errores en el formulario.")
+            messages.error(request, "Por favor, reveja os erros no formulário.")
     else:
         form = RegistroPadreForm()
 
@@ -61,13 +61,13 @@ def login_padre_view(request):
         if form.is_valid():
             user = form.get_user()
             login(request, user)
-            messages.success(request, f"Sesión iniciada como {user.get_full_name() or user.username}.")
+            messages.success(request, f"Sessão iniciada como {user.get_full_name() or user.username}.")
             
             # Redirección inteligente al parámetro 'next' si existe
             redirect_to = request.POST.get('next') or request.GET.get('next') or 'mis_llaveros'
             return redirect(redirect_to)
         else:
-            messages.error(request, "Usuario o contraseña incorrectos.")
+            messages.error(request, "Usuario ou senha incorretos.")
     else:
         form = LoginFormPersonalizado()
 
@@ -75,18 +75,18 @@ def login_padre_view(request):
 
 
 def logout_padre_view(request):
-    """Cierra la sesión del padre y redirige con mensaje amistoso"""
+    """Encerra a sessão do pai e redireciona com mensagem de boas-vindas"""
     logout(request)
-    messages.info(request, "Has cerrado sesión de forma segura.")
+    messages.info(request, "Sessão encerrada de forma segura.")
     return redirect('login')
 
 
 @login_required
 def mis_llaveros_view(request):
     """
-    PANEL PRIVADO DE PADRES:
-    Muestra la lista de todos los llaveros pertenecientes al padre logueado,
-    sus estados (activo/inactivo), total de lecturas NFC y accesos directos a edición.
+    PAINEL PRIVADO DE PAIS:
+    Mostra a lista de todos os porta-chaves pertencentes ao pai logado,
+    seus estados (ativo/inativo), total de leituras NFC e acessos diretos a edição.
     """
     llaveros = LlaveroNFC.objects.filter(padre=request.user).order_by('-fecha_creacion')
     

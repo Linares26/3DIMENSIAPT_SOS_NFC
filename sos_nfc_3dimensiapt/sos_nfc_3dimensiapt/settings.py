@@ -18,8 +18,8 @@ LANGUAGE_CODE = 'pt-pt'
 
 # Idiomas soportados
 LANGUAGES = [
-    ('es', _('Español')),
     ('pt-pt', _('Português')),
+    ('es', _('Español')),
     ('en', _('English')),
 ]
 

@@ -23,7 +23,7 @@ class RegistroPadreForm(UserCreationForm):
     first_name = forms.CharField(
         max_length=30, 
         required=True,
-        label="Nombre",
+        label="Nome",
         widget=forms.TextInput(attrs={
             'class': 'w-full rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-slate-900 shadow-sm focus:border-rose-500 focus:outline-none focus:ring-2 focus:ring-rose-500/20 text-sm font-semibold',
             'placeholder': 'Ej. José'
@@ -32,7 +32,7 @@ class RegistroPadreForm(UserCreationForm):
     last_name = forms.CharField(
         max_length=30, 
         required=True,
-        label="Apellidos",
+        label="Apelidos",
         widget=forms.TextInput(attrs={
             'class': 'w-full rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-slate-900 shadow-sm focus:border-rose-500 focus:outline-none focus:ring-2 focus:ring-rose-500/20 text-sm font-semibold',
             'placeholder': 'Ej. Pereira Silva'
@@ -40,7 +40,7 @@ class RegistroPadreForm(UserCreationForm):
     )
     email = forms.EmailField(
         required=True,
-        label="Correo Electrónico (para recuperación y alertas)",
+        label="Endereço de e-mail (para recuperação e alertas)",
         widget=forms.EmailInput(attrs={
             'class': 'w-full rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-slate-900 shadow-sm focus:border-rose-500 focus:outline-none focus:ring-2 focus:ring-rose-500/20 text-sm',
             'placeholder': 'jose@ejemplo.com'

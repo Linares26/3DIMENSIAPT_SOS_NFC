@@ -1,0 +1,474 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-07 01:15+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+#: .\sos_nfc_3dimensiapt\settings.py:21
+msgid "Português"
+msgstr ""
+
+#: .\sos_nfc_3dimensiapt\settings.py:22
+msgid "Español"
+msgstr ""
+
+#: .\sos_nfc_3dimensiapt\settings.py:23
+msgid "English"
+msgstr ""
+
+msgid "Sistema de porta-chaves NFC de Emergência Médica e Localização Infantil 3DimensiaPT" 
+msgstr "3DimensiaPT Emergency Medical and Child Location NFC Keychain System"
+
+msgid "2026 3DimensiaPT - Sistema de Assistência e Emergência NFC para a Infância." 
+msgstr "2026 3DimensiaPT - NFC Assistance and Emergency System for Childhood."
+
+msgid "Meus porta-chaves" 
+msgstr "My keychains"
+
+msgid "Sair" 
+msgstr "Log out"
+
+msgid "Entrar" 
+msgstr "Log in"
+
+msgid "Criar Conta" 
+msgstr "Create Account"
+
+msgid "¡Olá" 
+msgstr "Hello"
+
+msgid "Solicitou o restabelecimento da senha para a sua conta de tutor em 3DimensiaPT SOS NFC." 
+msgstr "You have requested a password reset for your tutor account at 3DimensiaPT SOS NFC."
+
+msgid "Clique no seguinte link para escolher uma nova senha:" 
+msgstr "Click the following link to choose a new password:"
+
+msgid "Se você não solicitou esta alteração, pode ignorar esta mensagem." 
+msgstr "If you did not request this change, you can ignore this message."
+
+msgid "Atenciosamente, \nEquipe 3DimensiaPT" 
+msgstr "Sincerely, \n3DimensiaPT Team"
+
+msgid "SOS Emergência - Restauração da senha de tutor" 
+msgstr "SOS Emergency - Tutor password reset"
+
+msgid "Iniciar sessão" 
+msgstr "Sign in"
+
+msgid "Acesso para pais e tutores" 
+msgstr "Access for parents and tutors"
+
+msgid "Inicie sessão para editar a ficha de emergência do seu filho." 
+msgstr "Sign in to edit your child's emergency record."
+
+msgid "Usuário ou E-mail" 
+msgstr "Username or E-mail"
+
+msgid "Senha" 
+msgstr "Password"
+
+msgid "Esqueceu a sua senha?" 
+msgstr "Forgot your password?"
+
+msgid "Redirecionamento ativo: Após identificação, voltará à página que estava consultando." 
+msgstr "Active redirection: After identification, you will return to the page you were viewing."
+
+msgid "Não tem uma conta de tutor?" 
+msgstr "Don't have a tutor account?"
+
+msgid "Registe-se gratuitamente" 
+msgstr "Register for free"
+
+msgid "Os meus Porta-chaves NFC | 3DimensiaPT" 
+msgstr "My NFC Keychains | 3DimensiaPT"
+
+msgid "Painel Familiar" 
+msgstr "Family Dashboard"
+
+msgid "Porta-chaves NFC de Emergência" 
+msgstr "Emergency NFC Keychains"
+
+msgid "Tutor" 
+msgstr "Tutor"
+
+msgid "Mudar senha" 
+msgstr "Change password"
+
+msgid "Ativo" 
+msgstr "Active"
+
+msgid "Inativo" 
+msgstr "Inactive"
+
+msgid "Contacto SOS" 
+msgstr "SOS Contact"
+
+msgid "Alergias" 
+msgstr "Allergies"
+
+msgid "Ver Ficha NFC" 
+msgstr "View NFC Profile"
+
+msgid "Editar dados" 
+msgstr "Edit data"
+
+msgid "Não tem porta-chaves vinculados ainda" 
+msgstr "No keychains linked yet"
+
+msgid "Quando adquirir o seu porta-chaves físico 3DimensiaPT, escaneie o seu código ou vincule-o a partir do administrador para gerenciar a sua ficha médica." 
+msgstr "When you purchase your physical 3DimensiaPT keychain, scan its code or link it from the administrator to manage your medical record."
+
+msgid "Mude a sua senha." 
+msgstr "Change your password."
+
+msgid "Corrija os campos indicados." 
+msgstr "Correct the indicated fields."
+
+msgid "Atualizar senha" 
+msgstr "Update password"
+
+msgid "Voltar aos porta-chaves" 
+msgstr "Back to keychains"
+
+msgid "Senha redefinida" 
+msgstr "Password reset"
+
+msgid "A sua senha foi redefinida corretamente. Já pode fazer login." 
+msgstr "Your password has been reset successfully. You can now log in."
+
+msgid "Nova Senha" 
+msgstr "New Password"
+
+msgid "Definir nova senha" 
+msgstr "Set new password"
+
+msgid "Escreva sua nova senha de acesso." 
+msgstr "Enter your new access password."
+
+msgid "Confirmar Nova Senha" 
+msgstr "Confirm New Password"
+
+msgid "Salvar Senha" 
+msgstr "Save Password"
+
+msgid "O link de recuperação não é válido ou expirou." 
+msgstr "The recovery link is invalid or has expired."
+
+msgid "Solicitar um novo link" 
+msgstr "Request a new link"
+
+msgid "E-mail enviado" 
+msgstr "Email sent"
+
+msgid "Link enviado" 
+msgstr "Link sent"
+
+msgid "Se o endereço coincidir com uma conta registrada, você receberá as instruções por e-mail." 
+msgstr "If the address matches a registered account, you will receive instructions via email."
+
+msgid "Voltar ao login" 
+msgstr "Back to login"
+
+msgid "Recuperar senha" 
+msgstr "Recover password"
+
+msgid "Insira seu e-mail para receber um link seguro de redefinição." 
+msgstr "Enter your email to receive a secure reset link."
+
+msgid "E-mail" 
+msgstr "Email"
+
+msgid "Enviar link de redefinição" 
+msgstr "Send reset link"
+
+msgid "Voltar ao início de sessão" 
+msgstr "Return to login"
+
+msgid "Criar Conta de Pai" 
+msgstr "Create Parent Account"
+
+msgid "Registo de Pais/Tutores" 
+msgstr "Parent/Guardian Registration"
+
+msgid "Cria a tua conta para vincular e gerenciar teus llaveros de emergência 3D" 
+msgstr "Create your account to link and manage your 3D emergency keychains"
+
+msgid "Por favor corrige os seguintes campos:" 
+msgstr "Please correct the following fields:"
+
+msgid "Nome" 
+msgstr "Name"
+
+msgid "Apelidos" 
+msgstr "Last Name"
+
+msgid "Nome de Usuário" 
+msgstr "Username"
+
+msgid "Repetir Senha" 
+msgstr "Repeat Password"
+
+msgid "Aceito os termos de custódia segura de dados médicos e contacto SOS." 
+msgstr "I accept the terms of secure custody for medical data and SOS contact."
+
+msgid "Criar minha Conta de Tutor" 
+msgstr "Create my Guardian Account"
+
+msgid "Já tens uma conta?" 
+msgstr "Already have an account?"
+
+msgid "Inicia sessão aqui" 
+msgstr "Log in here"
+
+msgid "Endereço de e-mail" 
+msgstr "Email address"
+
+msgid "Aceito os termos relativos à conservação de dados médicos de emergência ao abrigo do RGPD/COPPA" 
+msgstr "I accept the terms regarding the preservation of emergency medical data under GDPR/COPPA"
+
+msgid "Mínimo de 8 caracteres" 
+msgstr "Minimum of 8 characters"
+
+msgid "Já existe uma conta registada com este endereço de e-mail." 
+msgstr "There is already an account registered with this email address."
+
+msgid "Usuario o Email" 
+msgstr "Username or Email"
+
+msgid "jose_pai ou o teu email" 
+msgstr "jose_parent or your email"
+
+msgid "Palavra-passe" 
+msgstr "Password"
+
+msgid "Formulario para solicitar enlace de recuperación de contraseña por email" 
+msgstr "Form to request password recovery link via email"
+
+msgid "(para recuperação e alertas)" 
+msgstr "(for recovery and alerts)"
+
+msgid "Formulario cuando el padre hace clic en el enlace con token seguro" 
+msgstr "Form when the parent clicks on the link with a secure token"
+
+msgid "Nova palavra-passe segura" 
+msgstr "New secure password"
+
+msgid "Bem-vindo/a" 
+msgstr "Welcome"
+
+msgid "A sua conta de tutor foi criada com sucesso." 
+msgstr "Your tutor account has been created successfully."
+
+msgid "Por favor, reveja os erros no formulário." 
+msgstr "Please review the errors in the form."
+
+msgid "VISTA DE INICIO DE SESIÓN CON SOPORTE PARA '?next='. \nSi un padre escanea el llavero y pulsa 'Editar', la URL contiene '?next=/nfc/<uuid>/editar/'. \nAl autenticarse, vuelve inmediatamente a la ficha de su hijo." 
+msgstr "LOGIN VIEW WITH '?next=' SUPPORT. \nif a parent scans the keychain and clicks 'Edit', the URL contains '?next=/nfc/<uuid>/edit/'. \nUpon authentication, they are immediately redirected back to their child's profile."
+
+msgid "Sessão iniciada como" 
+msgstr "Logged in as"
+
+msgid "Usuario ou senha incorretos." 
+msgstr "Incorrect username or password."
+
+msgid "Encerra a sessão do pai e redireciona com mensagem de boas-vindas" 
+msgstr "Ends the parent session and redirects with a welcome message"
+
+msgid "Sessão encerrada de forma segura." 
+msgstr "Session closed securely."
+
+msgid "PAINEL PRIVADO DE PAIS: \nMostra a lista de todos os porta-chaves pertencentes ao pai logado, \nseus estados (ativo/inativo), total de leituras NFC e acessos diretos a edição." 
+msgstr "PRIVATE PARENT DASHBOARD: \nShows the list of all keychains belonging to the logged-in parent, \ntheir statuses (active/inactive), total NFC scans, and direct access to editing."
+
+msgid "Editar a Ficha de" 
+msgstr "Edit Profile of"
+
+msgid "Voltar para a vista pública" 
+msgstr "Back to public view"
+
+msgid "Editar Ficha de Emergência" 
+msgstr "Edit Emergency Profile"
+
+msgid "Porta-chaves vinculado a" 
+msgstr "Keychain linked to"
+
+msgid "escaneamentos" 
+msgstr "scans"
+
+msgid "Dados da Criança" 
+msgstr "Child's Data"
+
+msgid "Data de Nascimento" 
+msgstr "Date of Birth"
+
+msgid "Foto ou Avatar" 
+msgstr "Photo or Avatar"
+
+msgid "Contactos Telefónicos de Emergência" 
+msgstr "Emergency Contact Numbers"
+
+msgid "Contacto SOS Principal (Botão Gigante)" 
+msgstr "Main SOS Contact (Giant Button)"
+
+msgid "Parentesco" 
+msgstr "Relationship"
+
+msgid "Telefone" 
+msgstr "Phone Number"
+
+msgid "Contacto SOS Secundário (Opcional)" 
+msgstr "Secondary SOS Contact (Optional)"
+
+msgid "Ficha Médica e Alergias" 
+msgstr "Medical Record and Allergies"
+
+msgid "Grupo Sanguíneo" 
+msgstr "Blood Type"
+
+msgid "Medicação de Urgência" 
+msgstr "Emergency Medication"
+
+msgid "Alergias Graves (Será destacada em cor vermelha)" 
+msgstr "Severe Allergies (Will be highlighted in red)"
+
+msgid "Enfermidades ou Condiçoes Médicas" 
+msgstr "Medical Conditions or Illnesses"
+
+msgid "Instruções ou Observações Adicionais" 
+msgstr "Additional Instructions or Observations"
+
+msgid "Habilitar Ficha Pública" 
+msgstr "Enable Public Record"
+
+msgid "Desactive esta função se o porta-chaves se tiver extraviado, para ocultar os dados de emergência." 
+msgstr "Disable this function if the keychain is lost to hide emergency data."
+
+msgid "Salvar Alterações em Tempo Real" 
+msgstr "Save Changes in Real Time"
+
+msgid "Cancelar" 
+msgstr "Cancel"
+
+msgid "EMERGÊNCIA" 
+msgstr "EMERGENCY"
+
+msgid "Ficha de Urgência" 
+msgstr "Emergency Record"
+
+msgid "Acesso do Tutor" 
+msgstr "Guardian Access"
+
+msgid "Editar" 
+msgstr "Edit"
+
+msgid "Menor de idade" 
+msgstr "Minor"
+
+msgid "Chamada Inmediata aos Pais/Tutores" 
+msgstr "Immediate Call to Parents/Guardians"
+
+msgid "LIGAR" 
+msgstr "CALL"
+
+msgid "ALERGIAS CRÍTICAS / PERIGO" 
+msgstr "CRITICAL ALLERGIES / DANGER"
+
+msgid "Estado da Ficha" 
+msgstr "Record Status"
+
+msgid "Verificada em tempo real" 
+msgstr "Verified in real time"
+
+msgid "(Ex. Caneta de Adrenalina / Inalador)" 
+msgstr "(E.g., Adrenaline Pen / Inhaler)"
+
+msgid "Condições / Diagnósticos" 
+msgstr "Conditions / Diagnoses"
+
+msgid "Instruções Adicionais" 
+msgstr "Additional Instructions"
+
+msgid "Enviar a minha localização GPS ao pai pelo WhatsApp" 
+msgstr "Send my GPS location to my father via WhatsApp"
+
+msgid "Porta-chaves 3D com Chip NFC de Emergência" 
+msgstr "3D Keychain with Emergency NFC Chip"
+
+msgid "Em caso de risco vital ligue imediatamente ao 112 / 911" 
+msgstr "In case of life-threatening risk, call 112 / 911 immediately"
+
+msgid "Formulário otimizado para pais com estilos nativos do Tailwind CSS \ne validação para uma atualização rápida em dispositivos móveis." 
+msgstr "Optimized form for parents with native Tailwind CSS styles and validation for quick updates on mobile devices."
+
+msgid "O telefone de emergência principal é obrigatório." 
+msgstr "The main emergency phone number is mandatory."
+
+msgid "Qualquer detalhe extra que um médico ou policial precise saber." 
+msgstr "Any extra details that a doctor or police officer might need to know."
+
+msgid "Ex.: Ventolín / Epipen na mochila escolar" 
+msgstr "Ex.: Ventolin / Epipen in school backpack"
+
+msgid "Ex.: Asma infantil com broncoespasmos estacionais." 
+msgstr "Ex.: Childhood asthma with seasonal bronchospasms."
+
+msgid "Ex.: ALERGIA GRAVE A FRUTOS SECOS (amendoins, nozes) e PENICILINA." 
+msgstr "Ex.: SEVERE NUT ALLERGY (peanuts, walnuts) and PENICILLIN."
+
+msgid "Ex: Pai / Avô" 
+msgstr "Ex: Father / Grandfather"
+
+msgid "Ex: Tiago Pereira (Pai)" 
+msgstr "Ex: Tiago Pereira (Father)"
+
+msgid "Ex: Mãe" 
+msgstr "Ex: Mother"
+
+msgid "Ex: Laura Gomes (Mãe)" 
+msgstr "Ex: Laura Gomes (Mother)"
+
+msgid "Ex: Pereira Silva" 
+msgstr "Ex: Pereira Silva"
+
+msgid "Ex: Tiago" 
+msgstr "Ex: Tiago"
+
+msgid "Positivo" 
+msgstr "Positive"
+
+msgid "Negativo" 
+msgstr "Negative"
+
+msgid "Desconhecido / Não especificado" 
+msgstr "Unknown / Not specified"
+
+msgid "DESC" 
+msgstr "DESC"
+
+msgid "Modelo representativo de cada porta-chaves físico 3D com chip NFC integrado. \nUtiliza UUID v4 para gerar URLs não sequenciais e invulneráveis a escaneos por força bruta." 
+msgstr "Representative model of each 3D physical keychain with integrated NFC chip. \nUses UUID v4 to generate non-sequential URLs that are invulnerable to brute-force scanning."
+
+msgid "Não tem autorização para modificar este porta-chaves de emergência." 
+msgstr "You do not have authorization to modify this emergency keychain."
+
+msgid "A ficha de emergência de" 
+msgstr "The emergency record for"
+
+msgid "foi atualizada com sucesso." 
+msgstr "has been updated successfully."
+
+msgid "Por favor, corrija os erros do formulário." 
+msgstr "Please correct the errors in the form."
