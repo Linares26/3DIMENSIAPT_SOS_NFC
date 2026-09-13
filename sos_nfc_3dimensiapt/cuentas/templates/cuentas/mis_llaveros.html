@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load i18n %}
 
-{% block title %}Os meus Porta-chaves NFC | 3DimensiaPT{% endblock %}
+{% block title %}{% translate "Os meus Porta-chaves NFC | 3DimensiaPT" %}{% endblock %}
 
 {% block content %}
 <div class="max-w-4xl mx-auto py-8 px-4 sm:px-6">
@@ -10,18 +10,18 @@
     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-200">
         <div>
             <span class="text-xs font-black uppercase text-rose-600 bg-rose-50 px-2.5 py-1 rounded-full border border-rose-200">
-                Painel Familiar
+                {% translate "Painel Familiar" %}
             </span>
-            <h1 class="text-2xl font-black text-slate-900 mt-1">Porta-chaves NFC de Emergência</h1>
-            <p class="text-xs text-slate-500">Tutor: <strong>{{ request.user.get_full_name|default:request.user.username }}</strong> ({{ request.user.email }})</p>
+            <h1 class="text-2xl font-black text-slate-900 mt-1">{% translate "Porta-chaves NFC de Emergência" %}</h1>
+            <p class="text-xs text-slate-500">{% translate "Tutor: " %}<strong>{{ request.user.get_full_name|default:request.user.username }}</strong> ({{ request.user.email }})</p>
         </div>
 
         <div class="flex items-center gap-2">
             <a href="{% url 'password_change' %}" class="px-3.5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl text-xs transition">
-                Mudar senha
+                {% translate "Mudar senha" %}
             </a>
             <a href="{% url 'logout' %}" class="px-3.5 py-2 bg-rose-50 hover:bg-rose-100 text-rose-700 font-bold rounded-xl text-xs border border-rose-200 transition">
-                Sair
+                {% translate "Sair" %}
             </a>
         </div>
     </div>
@@ -43,30 +43,30 @@
                             <h2 class="text-base font-black text-slate-900 leading-tight">
                                 {{ llavero.nombre_menor }} {{ llavero.apellidos_menor }}
                             </h2>
-                            <p class="text-xs text-slate-400 mt-0.5">Grupo: <span class="font-bold text-rose-600">{{ llavero.get_grupo_sanguineo_display }}</span></p>
+                            <p class="text-xs text-slate-400 mt-0.5">{% translate "Grupo:" %} <span class="font-bold text-rose-600">{{ llavero.get_grupo_sanguineo_display }}</span></p>
                         </div>
                     </div>
 
                     <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold {% if llavero.esta_activo %}bg-emerald-100 text-emerald-800{% else %}bg-rose-100 text-rose-800{% endif %}">
-                        {% if llavero.esta_activo %}● Ativo{% else %}○ Inativo{% endif %}
+                        {% if llavero.esta_activo %}● {% translate "Ativo" %} {% else %}○ {% translate "Inativo" %} {% endif %}
                     </span>
                 </div>
 
                 <!-- Resumo de emergências -->
                 <div class="bg-slate-50 rounded-2xl p-3 text-xs space-y-1 text-slate-600">
-                    <p>📞 <strong>Contacto SOS:</strong> {{ llavero.nombre_contacto_1 }} ({{ llavero.telefono_contacto_1 }})</p>
+                    <p>📞 <strong>{% translate "Contacto SOS" %}:</strong> {{ llavero.nombre_contacto_1 }} ({{ llavero.telefono_contacto_1 }})</p>
                     {% if llavero.alergias_graves %}
-                        <p class="text-rose-700">⚠️ <strong>Alergias:</strong> {{ llavero.alergias_graves|truncatechars:45 }}</p>
+                        <p class="text-rose-700">⚠️ <strong>{% translate "Alergias" %}:</strong> {{ llavero.alergias_graves|truncatechars:45 }}</p>
                     {% endif %}
                 </div>
 
                 <!-- Acciones -->
                 <div class="grid grid-cols-2 gap-2 pt-1">
                     <a href="{% url 'ficha_publica' uuid=llavero.id %}" target="_blank" class="py-2 px-3 text-center bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs rounded-xl transition">
-                        Ver Ficha NFC ↗
+                        {% translate "Ver Ficha NFC" %} ↗
                     </a>
                     <a href="{% url 'editar_ficha' uuid=llavero.id %}" class="py-2 px-3 text-center bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs rounded-xl shadow-sm shadow-rose-600/30 transition">
-                        Editar dados ✎
+                        {% translate "Editar dados" %} ✎
                     </a>
                 </div>
             </div>
@@ -79,7 +79,7 @@
                 </div>
                 <h3 class="text-sm font-bold text-slate-800">Não tem porta-chaves vinculados ainda</h3>
                 <p class="text-xs text-slate-500 mt-1 max-w-sm mx-auto">
-                    Quando adquirir o seu porta-chaves físico 3DimensiaPT, escaneie o seu código ou vincule-o a partir do administrador para gerenciar a sua ficha médica.
+                    {% translate "Quando adquirir o seu porta-chaves físico 3DimensiaPT, escaneie o seu código ou vincule-o a partir do administrador para gerenciar a sua ficha médica." %}
                 </p>
             </div>
         {% endfor %}

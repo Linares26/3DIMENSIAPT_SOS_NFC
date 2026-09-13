@@ -14,15 +14,17 @@ USE_L10N = True
 USE_TZ = True
 
 # Idioma por defecto
-LANGUAGE_CODE = 'pt-pt'
+LANGUAGE_CODE = 'pt'
 
 # Idiomas soportados
 LANGUAGES = [
-    ('pt-pt', _('Português')),
+    ('pt', _('Português')),
     ('es', _('Español')),
     ('en', _('English')),
 ]
-
+# Asegurar que las cookies de idioma expiren correctamente
+LANGUAGE_COOKIE_NAME = 'django_language'
+LANGUAGE_COOKIE_AGE = 365 * 24 * 60 * 60
 # Directorio donde se guardarán los archivos de traducción
 LOCALE_PATHS = [
     BASE_DIR / 'locale',

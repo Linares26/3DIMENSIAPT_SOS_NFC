@@ -5,29 +5,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>SOS EMERGÊNCIA | {{ llavero.nombre_menor }} {{ llavero.apellidos_menor }}</title>
+    <title>{% translate "SOS EMERGÊNCIA" %} | {{ llavero.nombre_menor }} {{ llavero.apellidos_menor }}</title>
     
-    <!-- Meta tags para SEO y PWA -->
     <meta name="theme-color" content="#e11d48">
-    <meta name="description" content="Ficha Médica de Emergencia NFC 3DimensiaPT">
+    <meta name="description" content="{% translate 'Ficha Médica de Emergencia NFC 3DimensiaPT' %}">
     
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Tipografía Inter / Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <style>
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
-        .pulse-emergency {
-            animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-        }
-        @keyframes pulse-ring {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.85; transform: scale(1.02); }
-        }
+        .pulse-emergency { animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+        @keyframes pulse-ring { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.85; transform: scale(1.02); } }
     </style>
 </head>
 <body class="min-h-full flex flex-col justify-between text-slate-800 antialiased selection:bg-rose-500 selection:text-white">
@@ -42,56 +33,51 @@
                     </svg>
                 </span>
                 <div>
-                    <p class="text-xs font-extrabold uppercase tracking-wider text-rose-100">Ficha de Urgência NFC</p>
+                    <p class="text-xs font-extrabold uppercase tracking-wider text-rose-100">{% translate "Ficha de Urgência NFC" %}</p>
                     <h1 class="text-sm font-black tracking-tight leading-none">3DimensiaPT SOS</h1>
                 </div>
             </div>
 
-            <!-- Botão de Edição para o Padre -->
-            {% if es_propietario %}
-                <a href="{% url 'editar_ficha' uuid=llavero.id %}" 
-                   class="inline-flex items-center gap-1 bg-white text-rose-700 hover:bg-rose-50 text-xs font-bold py-1.5 px-3 rounded-full shadow transition-all active:scale-95">
-                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
-                    </svg>
-                    Editar
-                </a>
-            {% else %}
-                <a href="{% url 'login' %}?next={% url 'editar_ficha' uuid=llavero.id %}" 
-                   class="inline-flex items-center text-xs font-semibold text-rose-100 hover:text-white underline underline-offset-2">
-                    Acesso do Tutor
-                </a>
-            {% endif %}
-        </div>
-        <!-- SELECTOR DE IDIOMAS DENTRO DEL BASE.HTML -->
-        <div class="language-selector">
-            <form action="{% url 'set_language' %}" method="post">
-                {% csrf_token %}
-                <select name="language" onchange="this.form.submit()" class="bg-rose-700 text-white text-xs font-semibold py-1 px-2 rounded-lg border border-rose-500 focus:outline-none">
-                    {% get_current_language as CURRENT_LANG %}
-                    {% get_available_languages as LANGUAGES %}
-                    {% get_language_info_list for LANGUAGES as languages %}
-                    {% for lang in languages %}
-                        <option value="{{ lang.code }}" class="bg-slate-800 text-white" {% if lang.code == CURRENT_LANG %}selected{% endif %}>
-                            {% if lang.code == 'pt-pt' %}🇵🇹 PT{% endif %}
-                            {% if lang.code == 'es' %}🇪🇸 ES{% endif %}
-                            {% if lang.code == 'en' %}🇬🇧 EN{% endif %}
-                        </option>
-                    {% endfor %}
-                </select>
-            </form>
+            <div class="flex items-center space-x-2">
+                <!-- SELECTOR DE IDIOMAS -->
+                <form action="{% url 'set_language' %}" method="post" class="inline-block">
+                    {% csrf_token %}
+                    <input name="next" type="hidden" value="{{ request.get_full_path }}">
+                    <select name="language" onchange="this.form.submit()" class="bg-slate-100 border text-slate-700 py-1 px-2 rounded-lg text-xs leading-tight focus:outline-none">
+                        {% get_current_language as CURRENT_LANG %}
+                        {% get_available_languages as LANGUAGES %}
+                        {% get_language_info_list for LANGUAGES as languages %}
+                        {% for lang in languages %}
+                            <option value="{{ lang.code }}" {% if lang.code == CURRENT_LANG %}selected{% endif %}>
+                                {% if lang.code == 'pt' %}🇵🇹 PT{% endif %}
+                                {% if lang.code == 'es' %}🇪🇸 ES{% endif %}
+                                {% if lang.code == 'en' %}🇬🇧 EN{% endif %}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </form>
+
+                <!-- Botão de Edição para o Padre -->
+                {% if es_propietario %}
+                    <a href="{% url 'editar_ficha' uuid=llavero.id %}" class="inline-flex items-center gap-1 bg-white text-rose-700 hover:bg-rose-50 text-xs font-bold py-1.5 px-3 rounded-full shadow transition-all active:scale-95">
+                        {% translate "Editar" %}
+                    </a>
+                {% else %}
+                    <a href="{% url 'login' %}?next={% url 'editar_ficha' uuid=llavero.id %}" class="inline-flex items-center text-xs font-semibold text-rose-100 hover:text-white underline underline-offset-2">
+                        {% translate "Acesso do Tutor" %}
+                    </a>
+                {% endif %}
+            </div>
         </div>
     </header>
 
-    <!-- CONTENEDOR PRINCIPAL MOBILE-FIRST -->
+    <!-- CONTENEDOR PRINCIPAL -->
     <main class="flex-1 max-w-md w-full mx-auto px-4 py-4 space-y-4">
 
-        <!-- 1. TARJETA DE IDENTIFICACIÓN DEL MENOR -->
+        <!-- 1. TARJETA DE IDENTIFICACIÓN -->
         <div class="bg-white rounded-3xl p-5 shadow-sm border border-slate-200/80 flex items-center space-x-4">
             {% if llavero.foto %}
-                <img src="{{ llavero.foto.url }}" 
-                     alt="{{ llavero.nombre_menor }}" 
-                     class="w-20 h-20 rounded-2xl object-cover ring-4 ring-rose-100 shadow">
+                <img src="{{ llavero.foto.url }}" alt="{{ llavero.nombre_menor }}" class="w-20 h-20 rounded-2xl object-cover ring-4 ring-rose-100 shadow">
             {% else %}
                 <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-rose-500 to-amber-500 flex items-center justify-center text-white text-2xl font-extrabold shadow ring-4 ring-rose-100">
                     {{ llavero.nombre_menor|slice:":1" }}{{ llavero.apellidos_menor|slice:":1" }}
@@ -99,9 +85,9 @@
             {% endif %}
 
             <div class="flex-1 min-w-0">
-                <span class="inline-block bg-slate-100 text-slate-600 text-[11px] font-bold px-2 py-0.5 rounded-md uppercase tracking-wider mb-1">
-                    Menor de idade
-                </span>
+               <!-- <span class="inline-block bg-slate-100 text-slate-600 text-[11px] font-bold px-2 py-0.5 rounded-md uppercase tracking-wider mb-1">
+                    {% translate "Menor de idade" %}
+                </span> -->
                 <h2 class="text-2xl font-black text-slate-900 truncate leading-tight">
                     {{ llavero.nombre_menor }}
                 </h2>
@@ -110,21 +96,19 @@
                 </p>
                 {% if llavero.fecha_nacimiento %}
                     <p class="text-xs text-slate-400 mt-1">
-                        Data de Nascimento: <span class="font-semibold text-slate-600">{{ llavero.fecha_nacimiento|date:"d/m/Y" }}</span>
+                        {% translate "Data de Nascimento" %}: <span class="font-semibold text-slate-600">{{ llavero.fecha_nacimiento|date:"d/m/Y" }}</span>
                     </p>
                 {% endif %}
             </div>
         </div>
 
-        <!-- 2. BOTONES GIGANTES DE LLAMADA SOS (MÁXIMA PRIORIDAD) -->
+        <!-- 2. BOTONES SOS -->
         <div class="space-y-3">
             <p class="text-xs font-bold uppercase tracking-wider text-slate-400 px-1">
-                Chamada Inmediata aos Pais/Tutores:
+                {% translate "Chamada Inmediata aos Pais/Tutores" %}:
             </p>
 
-            <!-- Botão de Contato 1 (Primário) -->
-            <a href="tel:{{ llavero.telefono_contacto_1 }}" 
-               class="pulse-emergency w-full flex items-center justify-between bg-emerald-600 hover:bg-emerald-700 text-white p-4 rounded-2xl shadow-lg shadow-emerald-600/25 active:scale-[0.98] transition-all">
+            <a href="tel:{{ llavero.telefono_contacto_1 }}" class="pulse-emergency w-full flex items-center justify-between bg-emerald-600 hover:bg-emerald-700 text-white p-4 rounded-2xl shadow-lg shadow-emerald-600/25 active:scale-[0.98] transition-all">
                 <div class="flex items-center space-x-3">
                     <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
                         <svg class="w-7 h-7 text-white animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -133,10 +117,15 @@
                     </div>
                     <div class="text-left">
                         <span class="text-xs uppercase font-bold tracking-wider text-emerald-100 block">
-                            {{ llavero.parentesco_contacto_1|default:"Contacto Principal" }}
+                            {% if llavero.parentesco_contacto_1 %}
+                                {% translate llavero.parentesco_contacto_1 as parentesco_traducido %}
+                                {{ parentesco_traducido }}
+                            {% else %}
+                                {% translate "Contacto Principal" %}
+                            {% endif %}
                         </span>
                         <span class="text-lg font-black tracking-tight block">
-                            LIGAR: {{ llavero.nombre_contacto_1 }}
+                            {% translate "LIGAR" %}: {{ llavero.nombre_contacto_1 }}
                         </span>
                         <span class="text-xs text-emerald-200 font-mono font-bold">
                             {{ llavero.telefono_contacto_1 }}
@@ -159,9 +148,14 @@
                             </svg>
                         </div>
                         <div class="text-left">
-                            <span class="text-[10px] uppercase font-bold tracking-wider text-slate-400 block">
-                                {{ llavero.parentesco_contacto_2|default:"Contacto Secundário" }}
-                            </span>
+                            <span class="text-xs uppercase font-bold tracking-wider text-emerald-100 block">
+                            {% if llavero.parentesco_contacto_2 %}
+                                {% translate llavero.parentesco_contacto_2 as parentesco_traducido2 %}
+                                {{ parentesco_traducido2 }}
+                            {% else %}
+                                {% translate "Contacto Secundario" %}
+                            {% endif %}
+                        </span>
                             <span class="text-base font-bold text-white block">
                                 {{ llavero.nombre_contacto_2 }}
                             </span>
@@ -171,13 +165,13 @@
                         </div>
                     </div>
                     <span class="text-xs font-semibold text-slate-400 bg-slate-700 px-2.5 py-1 rounded-lg">
-                        Ligar
+                        {% translate "Ligar" %}
                     </span>
                 </a>
             {% endif %}
         </div>
 
-        <!-- 3. ALERGIAS CRÍTICAS (TARJETA DE MÁXIMO CONTRASTE) -->
+        <!-- 3. ALERGIAS -->
         {% if llavero.alergias_graves %}
             <div class="bg-rose-50 border-2 border-rose-500/50 rounded-2xl p-4 shadow-sm">
                 <div class="flex items-center space-x-2 text-rose-700 mb-2">
@@ -185,7 +179,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
                     </svg>
                     <h3 class="font-extrabold text-sm uppercase tracking-wide">
-                        ALERGIAS CRÍTICAS / PERIGO:
+                        {% translate "ALERGIAS CRÍTICAS / PERIGO" %}:
                     </h3>
                 </div>
                 <p class="text-base font-black text-rose-950 bg-white p-3 rounded-xl border border-rose-200 shadow-inner">
@@ -200,17 +194,17 @@
             <!-- Grupo Sanguíneo y Medicación Rápida -->
             <div class="grid grid-cols-2 gap-2">
                 <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
-                    <p class="text-[10px] font-bold uppercase text-slate-400">Grupo Sanguíneo</p>
+                    <p class="text-[10px] font-bold uppercase text-slate-400">{% translate "Grupo Sanguíneo" %}</p>
                     <p class="text-xl font-black text-rose-600 mt-0.5">
                         {{ llavero.get_grupo_sanguineo_display }}
                     </p>
                 </div>
 
                 <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
-                    <p class="text-[10px] font-bold uppercase text-slate-400">Estado da Ficha</p>
+                    <p class="text-[10px] font-bold uppercase text-slate-400">{% translate "Estado da Ficha" %}</p>
                     <p class="text-xs font-bold text-emerald-600 flex items-center gap-1 mt-1">
                         <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
-                        Verificada em tempo real
+                        {% translate "Verificada em tempo real" %}
                     </p>
                 </div>
             </div>
@@ -222,7 +216,7 @@
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
                         </svg>
-                        Medicação de Urgência:
+                        {% translate "Medicação de Urgência" %}:
                     </p>
                     <p class="text-sm font-bold text-amber-950 mt-1">
                         {{ llavero.medicacion_urgencia }}
@@ -233,7 +227,7 @@
             <!-- Enfermedades / Condiciones -->
             {% if llavero.enfermedades_condiciones %}
                 <div class="text-sm">
-                    <p class="text-xs font-bold text-slate-500 uppercase">Condições / Diagnósticos:</p>
+                    <p class="text-xs font-bold text-slate-500 uppercase">{% translate "Condições / Diagnósticos" %}:</p>
                     <p class="font-medium text-slate-800 mt-0.5">{{ llavero.enfermedades_condiciones }}</p>
                 </div>
             {% endif %}
@@ -241,7 +235,7 @@
             <!-- Observaciones extra -->
             {% if llavero.observaciones_medicas %}
                 <div class="text-sm border-t border-slate-100 pt-2">
-                    <p class="text-xs font-bold text-slate-500 uppercase">Instruções Adicionais:</p>
+                    <p class="text-xs font-bold text-slate-500 uppercase">{% translate "Instruções Adicionais" %}:</p>
                     <p class="text-slate-700 mt-0.5 italic">"{{ llavero.observaciones_medicas }}"</p>
                 </div>
             {% endif %}
@@ -253,35 +247,15 @@
             <svg class="w-4 h-4 text-emerald-600" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.297.144.35.491 1.198.534 1.285.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.353.101.173.449.741.964 1.201.662.591 1.221.774 1.394.86.173.086.274.072.376-.043.101-.116.433-.506.549-.68.116-.173.231-.144.39-.086s1.011.477 1.184.564.289.13.332.202c.043.072.043.419-.101.824z"/>
             </svg>
-            <span>Enviar a minha localização GPS ao pai pelo WhatsApp</span>
+            <span>{% translate "Enviar a minha localização GPS ao pai pelo WhatsApp"%}</span>
         </button>
 
     </main>
 
-    <!-- PIE DE PÁGINA INFORMATIVO -->
     <footer class="max-w-md w-full mx-auto px-4 py-3 text-center text-slate-400 text-[11px] border-t border-slate-200 mt-2">
-        <p class="font-semibold text-slate-500">Porta-chaves 3D com Chip NFC de Emergência - 3DimensiaPT</p>
-        <p class="mt-0.5">Em caso de risco vital ligue imediatamente ao 112 / 911</p>
+        <p class="font-semibold text-slate-500">{% translate "Porta-chaves 3D com Chip NFC de Emergência - 3DimensiaPT" %}</p>
+        <p class="mt-0.5">{% translate "Em caso de risco vital ligue imediatamente ao 112 / 911" %}</p>
     </footer>
 
-    <!-- SCRIPT DE LOCALIZAÇÃO GPS OPCIONAL -->
-    <script>
-        function compartirUbicacion(telefono, nombre) {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(function(position) {
-                    var lat = position.coords.latitude;
-                    var lng = position.coords.longitude;
-                    var mapsUrl = 'https://maps.google.com/?q=' + lat + ',' + lng;
-                    var mensaje = encodeURIComponent('Olá, encontrei ' + nombre + ' e escaneei o porta-chaves de emergência 3DimensiaPT. A minha localização atual é: ' + mapsUrl);
-                    window.open('https://api.whatsapp.com/send?phone=' + telefono.replace(/[^0-9]/g, '') + '&text=' + mensaje, '_blank');
-                }, function(error) {
-                    var mensajeFallback = encodeURIComponent('Olá, encontrei ' + nombre + ' e escaneei o porta-chaves de emergência 3DimensiaPT.');
-                    window.open('https://api.whatsapp.com/send?phone=' + telefono.replace(/[^0-9]/g, '') + '&text=' + mensajeFallback, '_blank');
-                });
-            } else {
-                alert('A geolocalização não está suportada neste navegador.');
-            }
-        }
-    </script>
 </body>
 </html>

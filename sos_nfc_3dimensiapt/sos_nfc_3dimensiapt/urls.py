@@ -6,25 +6,20 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from django.views.generic import RedirectView
 from django.conf.urls.i18n import i18n_patterns
+from django.views.generic import RedirectView
+
 
 urlpatterns = [
-    path('i18n/', include('django.conf.urls.i18n')),  # Ruta para cambiar de idioma
+    path('i18n/', include('django.conf.urls.i18n')), # Sin prefijo de idioma
 ]
 
 urlpatterns += i18n_patterns(
     path('admin/', admin.site.urls),
-
-    # Redirección de la raíz al panel de llaveros (o login si no está autenticado)
     path('', RedirectView.as_view(pattern_name='mis_llaveros', permanent=False), name='inicio'),
-
-    # Rutas de autenticación y panel de padres
     path('', include('cuentas.urls')),
-
-    # Rutas públicas y de edición de fichas NFC
     path('', include('emergencias.urls')),
-    prefix_default_language=True,  # Si es 'False', la versión por defecto ('es') no llevará prefijo /es/
+    prefix_default_language=True,
 )
 
 # Servir archivos estáticos y multimedia en entorno de desarrollo

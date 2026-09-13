@@ -10,6 +10,7 @@ from django.utils import timezone
 from django.db.models import F
 from .models import LlaveroNFC
 from .forms import FichaEmergenciaForm
+from django.utils.translation import gettext as _
 
 
 def ficha_publica_view(request, uuid):
@@ -24,6 +25,9 @@ def ficha_publica_view(request, uuid):
     """
     # 1. Recuperar el llavero o devolver 404
     llavero = get_object_or_404(LlaveroNFC, id=uuid)
+
+   # parentesco_1_traducido = _(llavero.parentesco_contacto_1) if llavero.parentesco_contacto_1 else _("Contacto Principal")
+    
 
     # 2. Si el llavero está desactivado por el padre (ej. pérdida/robo)
     if not llavero.esta_activo:
@@ -75,13 +79,13 @@ def editar_ficha_view(request, uuid):
             form.save()
             messages.success(
                 request, 
-                f"✅ A ficha de emergência de {llavero.nombre_menor} foi atualizada com sucesso."
+                f"✅ _('A ficha de emergência de {llavero.nombre_menor} foi atualizada com sucesso.')"
             )
             return redirect('ficha_publica', uuid=llavero.id)
         else:
             messages.error(
                 request, 
-                "⚠️ Por favor, corrija os erros do formulário."
+                _("⚠️ Por favor, corrija os erros do formulário.")
             )
     else:
         form = FichaEmergenciaForm(instance=llavero)

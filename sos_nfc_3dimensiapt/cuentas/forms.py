@@ -3,6 +3,7 @@
 Archivo: cuentas/forms.py
 """
 from django import forms
+from django.utils.translation import gettext_lazy as _
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import (
     UserCreationForm, 
@@ -23,32 +24,32 @@ class RegistroPadreForm(UserCreationForm):
     first_name = forms.CharField(
         max_length=30, 
         required=True,
-        label="Nome",
+        label=_("Nome"),
         widget=forms.TextInput(attrs={
             'class': 'w-full rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-slate-900 shadow-sm focus:border-rose-500 focus:outline-none focus:ring-2 focus:ring-rose-500/20 text-sm font-semibold',
-            'placeholder': 'Ej. José'
+            'placeholder': _('Ej. José')
         })
     )
     last_name = forms.CharField(
         max_length=30, 
         required=True,
-        label="Apelidos",
+        label=_("Apelidos"),
         widget=forms.TextInput(attrs={
             'class': 'w-full rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-slate-900 shadow-sm focus:border-rose-500 focus:outline-none focus:ring-2 focus:ring-rose-500/20 text-sm font-semibold',
-            'placeholder': 'Ej. Pereira Silva'
+            'placeholder': _('Ej. Pereira Silva')
         })
     )
     email = forms.EmailField(
         required=True,
-        label="Endereço de e-mail (para recuperação e alertas)",
+        label=_("Endereço de e-mail (para recuperação e alertas)"),
         widget=forms.EmailInput(attrs={
             'class': 'w-full rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-slate-900 shadow-sm focus:border-rose-500 focus:outline-none focus:ring-2 focus:ring-rose-500/20 text-sm',
-            'placeholder': 'jose@ejemplo.com'
+            'placeholder':'jose@ejemplo.com'
         })
     )
     terminos_privacidad = forms.BooleanField(
         required=True,
-        label="Aceito os termos relativos à conservação de dados médicos de emergência ao abrigo do RGPD/COPPA",
+        label=_("Aceito os termos relativos à conservação de dados médicos de emergência ao abrigo do RGPD/COPPA"),
         widget=forms.CheckboxInput(attrs={
             'class': 'h-4 w-4 rounded border-slate-300 text-rose-600 focus:ring-rose-500 cursor-pointer'
         })
@@ -60,7 +61,7 @@ class RegistroPadreForm(UserCreationForm):
         widgets = {
             'username': forms.TextInput(attrs={
                 'class': 'w-full rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-slate-900 shadow-sm focus:border-rose-500 focus:outline-none focus:ring-2 focus:ring-rose-500/20 text-sm font-semibold',
-                'placeholder': 'jose_pai'
+                'placeholder': _('jose_pai')
             }),
         }
 
@@ -71,13 +72,13 @@ class RegistroPadreForm(UserCreationForm):
             if fieldname in self.fields:
                 self.fields[fieldname].widget.attrs.update({
                     'class': 'w-full rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-slate-900 shadow-sm focus:border-rose-500 focus:outline-none focus:ring-2 focus:ring-rose-500/20 text-sm font-mono',
-                    'placeholder': 'Mínimo de 8 caracteres'
+                    'placeholder': _('Mínimo de 8 caracteres')
                 })
 
     def clean_email(self):
         email = self.cleaned_data.get('email').strip().lower()
         if User.objects.filter(email=email).exists():
-            raise forms.ValidationError("Já existe uma conta registada com este endereço de e-mail.")
+            raise forms.ValidationError(_("Já existe uma conta registada com este endereço de e-mail."))
         return email
 
 
@@ -87,14 +88,14 @@ class LoginFormPersonalizado(AuthenticationForm):
     Permite autenticación por nombre de usuario o email.
     """
     username = forms.CharField(
-        label="Usuario o Email",
+        label=_("Usuario o Email"),
         widget=forms.TextInput(attrs={
             'class': 'w-full rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-slate-900 shadow-sm focus:border-rose-500 focus:outline-none focus:ring-2 focus:ring-rose-500/20 text-sm font-semibold',
-            'placeholder': 'jose_pai ou o teu email'
+            'placeholder': _('jose_pai ou o teu email')
         })
     )
     password = forms.CharField(
-        label="Palavra-passe",
+        label=_("Palavra-passe"),
         widget=forms.PasswordInput(attrs={
             'class': 'w-full rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-slate-900 shadow-sm focus:border-rose-500 focus:outline-none focus:ring-2 focus:ring-rose-500/20 text-sm font-mono',
             'placeholder': '••••••••'
@@ -121,5 +122,5 @@ class NuevaPasswordForm(SetPasswordForm):
             if fieldname in self.fields:
                 self.fields[fieldname].widget.attrs.update({
                     'class': 'w-full rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-slate-900 shadow-sm focus:border-rose-500 focus:outline-none focus:ring-2 focus:ring-rose-500/20 text-sm font-mono',
-                    'placeholder': 'Nova palavra-passe segura'
+                    'placeholder': _('Nova palavra-passe segura')
                 })
