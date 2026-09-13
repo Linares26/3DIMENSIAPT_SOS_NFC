@@ -259,3 +259,29 @@
 
 </body>
 </html>
+<script>
+function compartirUbicacion(telefono, nombre) {
+    if (!navigator.geolocation) {
+        alert("La geolocalización no está soportada por su navegador.");
+        return;
+    }
+
+    // Limpiar caracteres no numéricos del teléfono
+    const telLimpio = telefono.replace(/\D/g, '');
+
+    navigator.geolocation.getCurrentPosition(
+        (position) => {
+            const lat = position.coords.latitude;
+            const lon = position.coords.longitude;
+            const mapUrl = `https://maps.google.com/?q=${lat},${lon}`;
+            const mensaje = encodeURIComponent(`¡Ubicación de emergencia! Estoy con ${nombre}. Mi ubicación GPS actual: ${mapUrl}`);
+            
+            window.open(`https://wa.me/${telLimpio}?text=${mensaje}`, '_blank');
+        },
+        (error) => {
+            alert("No se pudo obtener la ubicación GPS. Por favor, habilite los permisos de ubicación.");
+        },
+        { enableHighAccuracy: true }
+    );
+}
+</script>
