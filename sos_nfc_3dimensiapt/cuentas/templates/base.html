@@ -12,7 +12,12 @@
     <meta name="description" content="Sistema de porta-chaves NFC de Emergência Médica e Localização Infantil 3DimensiaPT">
 
     <!-- Tailwind CSS CDN -->
-    <link href="{% static 'dist/output.css' %}" rel="stylesheet">
+    <!-- Carga Tailwind CDN directamente -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Silencia la advertencia de producción en la consola -->
+    <script>
+        console.warn = function() {};
+    </script>
 
     <!-- Google Fonts: Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
