@@ -79,7 +79,8 @@
             {% if llavero.foto %}
                 <img src="{{ llavero.foto.url }}" alt="{{ llavero.nombre_menor }}" class="w-20 h-20 rounded-2xl object-cover ring-4 ring-rose-100 shadow">
             {% else %}
-                <img src="https://www.flaticon.com/free-icons/user" alt="{{ llavero.nombre_menor }}" class="w-20 h-20 rounded-2xl object-cover ring-4 ring-rose-100 shadow">
+                <img src="/media/llaveros/avatares/no-avatar.jpg" class="w-20 h-20 rounded-2xl object-cover ring-4 ring-rose-100 shadow p-2 bg-slate-50">
+            
             {% endif %}
 
             <div class="flex-1 min-w-0">
