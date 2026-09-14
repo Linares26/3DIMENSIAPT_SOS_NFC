@@ -120,6 +120,11 @@ AWS_S3_ENDPOINT_URL = os.environ.get('SUPABASE_S3_ENDPOINT')
 AWS_S3_REGION_NAME = 'eu-west-1'  # Región genérica requerida por boto3
 AWS_S3_FILE_OVERWRITE = False
 
+# --- CONFIGURACIÓN DE URL PÚBLICA (SOLUCIÓN) ---
+AWS_QUERYSTRING_AUTH = False  # Elimina el ?AWSAccessKeyId=... y la firma expiration
+SUPABASE_PROJECT_ID = 'jfyosdfmstbtvrmurvjb'  # Tu ID de proyecto
+AWS_S3_CUSTOM_DOMAIN = f"{SUPABASE_PROJECT_ID}.supabase.co/storage/v1/object/public/{AWS_STORAGE_BUCKET_NAME}"
+
 if AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY:
     STORAGES = {
         "default": {
