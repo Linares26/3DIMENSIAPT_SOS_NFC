@@ -10,13 +10,12 @@
     <meta name="theme-color" content="#e11d48">
     <meta name="description" content="{% translate 'Ficha Médica de Emergencia NFC 3DimensiaPT' %}">
     
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="{% static 'dist/output.css' %}" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <style>
-        @import "tailwindcss";
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
         .pulse-emergency { animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
         @keyframes pulse-ring { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.85; transform: scale(1.02); } }
