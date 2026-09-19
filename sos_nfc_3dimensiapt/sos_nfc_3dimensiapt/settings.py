@@ -31,7 +31,7 @@ LOCALE_PATHS = [
 ]
 
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-3dimensiapt-nfc-key')
-DEBUG = os.environ.get('DJANGO_DEBUG', 'True') == 'True'
+DEBUG = os.environ.get('DJANGO_DEBUG', 'False').lower() == 'true'
 ALLOWED_HOSTS = ['*']
 
 # APPS INSTALADAS
