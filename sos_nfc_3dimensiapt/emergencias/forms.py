@@ -43,10 +43,13 @@ class FichaEmergenciaForm(forms.ModelForm):
                 'class': 'w-full rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-slate-900 shadow-sm focus:border-rose-500 focus:outline-none focus:ring-2 focus:ring-rose-500/20 text-sm font-semibold',
                 'placeholder': _('Ex: Pereira Silva')
             }),
-            'fecha_nacimiento': forms.DateInput(attrs={
-                'type': 'date',
-                'class': 'w-full rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-slate-900 shadow-sm focus:border-rose-500 focus:outline-none focus:ring-2 focus:ring-rose-500/20 text-sm'
-            }),
+            'fecha_nacimiento': forms.DateInput(
+                format='%Y-%m-%d',  
+                attrs={
+                    'type': 'date',
+                    'class': 'w-full rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-slate-900 shadow-sm focus:border-rose-500 focus:outline-none focus:ring-2 focus:ring-rose-500/20 text-sm'
+                }
+            ),
             'foto': forms.ClearableFileInput(attrs={
                 'class': 'w-full text-xs text-slate-600 file:mr-3 file:py-2 file:px-3 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-rose-50 file:text-rose-700 hover:file:bg-rose-100 cursor-pointer',
                 'accept': 'image/*'
