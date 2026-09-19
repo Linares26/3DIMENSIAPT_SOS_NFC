@@ -1126,3 +1126,207 @@ msgstr ""
 
  msgid "PADRINHO"
  msgstr "GODFATHER"
+
+ msgid "Sem condições médicas conhecidas"
+ msgstr "No known medical conditions"
+ 
+ msgid "Sem alergias graves"
+ msgstr "No known allergies"
+
+ msgid "Amendoim"
+ msgstr "Peanut"
+
+ msgid "Crustáceos"
+ msgstr "Crustaceans"
+
+ msgid "Látex"
+ msgstr "Latex"
+
+ msgid "Frutos de casca rija"
+ msgstr "Tree nuts"
+
+ msgid "Marisc"
+ msgstr "Shellfish"
+
+ msgid "peixe"
+ msgstr "Fish"
+
+ msgid "Outros"
+ msgstr "Other"
+
+ msgid "Leite de vaca"
+ msgstr "Milk"
+
+ msgid "Glúten"
+ msgstr "Gluten"
+
+ msgid " ovo"
+ msgstr "Egg"
+ 
+ msgid "Lactose"
+ msgstr "Lactose"
+ 
+ msgid "Sementes de sésamo"
+ msgstr "Sesame seeds"
+
+ msgid "Soja"
+ msgstr "Soy"
+
+ msgid "Penicilina"
+ msgstr "Penicillin"
+
+ msgid "AINEs"
+ msgstr "NSAIDs"
+
+ msgid "Ibuprofeno"
+ msgstr "Ibuprofen"
+ 
+ msgid "Aspirina"
+ msgstr "Aspirin"
+
+ msgid "Anestésicos locais"
+ msgstr "Local anesthetics"
+
+ msgid "Codeína"
+ msgstr "Codeine"
+
+ msgid "Morfina"
+ msgstr "Morphine"
+
+ msgid "abelha"
+ msgstr "bee"
+ 
+ msgid "vespa"
+ msgstr "wasp"
+
+ msgid "picada de cobra"
+ msgstr "snake bite"
+
+msgid "Epilepsia"
+msgstr "Epilepsy"
+
+msgid "Convulsões"
+msgstr "Seizures"
+
+msgid "Perturbação do Espectro do Autismo (PEA)"
+msgstr "Autism Spectrum Disorder (ASD)"
+
+msgid "Autismo"
+msgstr "Autism"
+
+msgid "Portador de pacemaker"
+msgstr "Pacemaker carrier"
+
+msgid "Toma medicação anticoagulante"
+msgstr "Takes anticoagulant medication"
+
+msgid "Hipertensão arterial"
+msgstr "Arterial hypertension"
+
+msgid "Diabetes"
+msgstr "Diabetes"
+
+msgid "Doença cardíaca"
+msgstr "Heart disease"
+
+msgid "Apneia do sono"
+msgstr "Sleep apnea"
+
+msgid "DPOC"
+msgstr "COPD"
+
+msgid "Problemas respiratórios"
+msgstr "Respiratory problems"
+
+msgid "Doença de Alzheimer"
+msgstr "Alzheimer's disease"
+
+msgid "Demência"
+msgstr "Dementia"
+
+msgid "Alergia a vacinas"
+msgstr "Vaccine allergy"
+
+msgid "Alergia ao iodo"
+msgstr "Iodine allergy"
+
+msgid "Insuficiência renal"
+msgstr "Kidney failure"
+
+msgid "Transplantes"
+msgstr "Transplants"
+
+msgid "Não consegue comunicar verbalmente"
+msgstr "Cannot communicate verbally"
+
+msgid "Arritmia cardíaca"
+msgstr "Cardiac arrhythmia"
+
+msgid "Hipertensão"
+msgstr "Hypertension"
+
+msgid "Asma"
+msgstr "Asthma"
+
+msgid "Ansiedade"
+msgstr "Anxiety"
+
+msgid "Depressão"
+msgstr "Depression"
+
+msgid "Esquizofrenia"
+msgstr "Schizophrenia"
+
+msgid "Transtorno bipolar"
+msgstr "Bipolar disorder"
+
+msgid "Transtorno de Pânico"
+msgstr "Panic disorder"
+
+msgid "Insuficiência renal crónica"
+msgstr "Chronic kidney failure"
+
+msgid "Diabetes Tipo 1"
+msgstr "Diabetes Type 1"
+
+msgid "Diabetes Tipo 2"
+msgstr "Diabetes Type 2"
+
+msgid "Hemofilia"
+msgstr "Hemophilia"
+
+msgid "Transplante de coração"
+msgstr "Heart transplant"
+
+msgid "Transplante de pulmão"
+msgstr "Lung transplant"
+
+msgid "Transplante de fígado"
+msgstr "Liver transplant"
+
+msgid "Transplante de rim"
+msgstr "Kidney transplant"
+
+msgid "Incapacidade visual"
+msgstr "Visual impairment"
+
+msgid "Surdez"
+msgstr "Deafness"
+
+msgid "Cegueira"
+msgstr "Blindness"
+
+msgid "Cadeira de rodas"
+msgstr "Wheelchair"
+
+msgid "Cego"
+msgstr "Blind"
+
+msgid "Surdo"
+msgstr "Deaf"
+
+msgid "Cadeirante"
+msgstr "Wheelchair user"
+
+msgid "Doença"
+msgstr "Disease"

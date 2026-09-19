@@ -182,7 +182,12 @@
                     </h3>
                 </div>
                 <p class="text-base font-black text-rose-950 bg-white p-3 rounded-xl border border-rose-200 shadow-inner">
-                    {{ llavero.alergias_graves }}
+                    {% if llavero.alergias_graves %}
+                        {% translate llavero.alergias_graves as alergias_traducido %}
+                        {{ alergias_traducido }}
+                    {% else %}
+                        {% translate "N/A" %}
+                    {% endif %}
                 </p>
             </div>
         {% endif %}
@@ -227,7 +232,14 @@
             {% if llavero.enfermedades_condiciones %}
                 <div class="text-sm">
                     <p class="text-xs font-bold text-slate-500 uppercase">{% translate "Condições / Diagnósticos" %}:</p>
-                    <p class="font-medium text-slate-800 mt-0.5">{{ llavero.enfermedades_condiciones }}</p>
+                    <p class="font-medium text-slate-800 mt-0.5">
+                        {% if llavero.enfermedades_condiciones %}
+                            {% translate llavero.enfermedades_condiciones as condiciones_traducido %}
+                            {{ condiciones_traducido }}
+                        {% else %}
+                            {% translate "Sem condições médicas conhecidas." %}
+                        {% endif %}
+                    </p>
                 </div>
             {% endif %}
 
@@ -235,7 +247,14 @@
             {% if llavero.observaciones_medicas %}
                 <div class="text-sm border-t border-slate-100 pt-2">
                     <p class="text-xs font-bold text-slate-500 uppercase">{% translate "Instruções Adicionais" %}:</p>
-                    <p class="text-slate-700 mt-0.5 italic">"{{ llavero.observaciones_medicas }}"</p>
+                    <p class="text-slate-700 mt-0.5 italic">
+                        {% if llavero.observaciones_medicas %}
+                            {% translate llavero.observaciones_medicas as observaciones_traducido %}
+                            {{ observaciones_traducido }}
+                        {% else %}
+                            {% translate "N/A" %}
+                        {% endif %}
+                    </p>
                 </div>
             {% endif %}
         </div>

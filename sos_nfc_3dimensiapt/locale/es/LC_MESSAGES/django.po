@@ -1130,3 +1130,207 @@ msgstr ""
 
  msgid "PADRINHO"
  msgstr "PADRINO"
+
+ msgid "Sem condições médicas conhecidas"
+ msgstr "Sin condiciones médicas conocidas"
+ 
+ msgid "Sem alergias graves"
+ msgstr "Sin alergias graves"
+
+ msgid "Amendoim"
+ msgstr "Maní"
+
+ msgid "Crustáceos"
+ msgstr "Crustáceos"
+
+ msgid "Látex"
+ msgstr "Látex"
+
+ msgid "Frutos de casca rija"
+ msgstr "Frutos secos"
+
+ msgid "Marisc"
+ msgstr "Marisco"
+
+ msgid "peixe"
+ msgstr "Pescado"
+
+ msgid "Outros"
+ msgstr "Otros"
+
+ msgid "Leite de vaca"
+ msgstr "Leche de vaca"
+
+ msgid "Glúten"
+ msgstr "Gluten"
+
+ msgid " ovo"
+ msgstr "huevo"
+ 
+ msgid "Lactose"
+ msgstr "Lactosa"
+ 
+ msgid "Sementes de sésamo"
+ msgstr "Semillas de sésamo"
+
+ msgid "Soja"
+ msgstr "Soya"
+
+ msgid "Penicilina"
+ msgstr "Penicilina"
+
+ msgid "AINEs"
+ msgstr "AINEs"
+
+ msgid "Ibuprofeno"
+ msgstr "Ibuprofeno"
+ 
+ msgid "Aspirina"
+ msgstr "Aspirina"
+
+ msgid "Anestésicos locais"
+ msgstr "Anestésicos locales"
+
+ msgid "Codeína"
+ msgstr "Codeína"
+
+ msgid "Morfina"
+ msgstr "Morfina"
+
+ msgid "abelha"
+ msgstr "abeja"
+ 
+ msgid "vespa"
+ msgstr "avispón"
+
+ msgid "picada de cobra"
+ msgstr "picadura de serpiente"
+
+msgid "Epilepsia"
+msgstr "Epilepsia"
+
+msgid "Convulsões"
+msgstr "Convulsiones"
+
+msgid "Perturbação do Espectro do Autismo (PEA)"
+msgstr "Perturbación del Espectro del Autismo (PEA)"
+
+msgid "Autismo"
+msgstr "Autismo"
+
+msgid "Portador de pacemaker"
+msgstr "Portador de marcapasos"
+
+msgid "Toma medicação anticoagulante"
+msgstr "Toma medicación anticoagulante"
+
+msgid "Hipertensão arterial"
+msgstr "Hipertensión arterial"
+
+msgid "Diabetes"
+msgstr "Diabetes"
+
+msgid "Doença cardíaca"
+msgstr "Enfermedad cardíaca"
+
+msgid "Apneia do sono"
+msgstr "Apnea del sueño"
+
+msgid "DPOC"
+msgstr "EPOC"
+
+msgid "Problemas respiratórios"
+msgstr "Problemas respiratorios"
+
+msgid "Doença de Alzheimer"
+msgstr "Enfermedad de Alzheimer"
+
+msgid "Demência"
+msgstr "Demencia"
+
+msgid "Alergia a vacinas"
+msgstr "Alergia a vacunas"
+
+msgid "Alergia ao iodo"
+msgstr "Alergia al iodo"
+
+msgid "Insuficiência renal"
+msgstr "Insuficiencia renal"
+
+msgid "Transplantes"
+msgstr "Trasplantes"
+
+msgid "Não consegue comunicar verbalmente"
+msgstr "No consigue comunicar verbalmente"
+
+msgid "Arritmia cardíaca"
+msgstr "Arritmia cardíaca"
+
+msgid "Hipertensão"
+msgstr "Hipertensión"
+
+msgid "Asma"
+msgstr "Asma"
+
+msgid "Ansiedade"
+msgstr "Ansiedad"
+
+msgid "Depressão"
+msgstr "Depresión"
+
+msgid "Esquizofrenia"
+msgstr "Esquizofrenia"
+
+msgid "Transtorno bipolar"
+msgstr "Trastorno bipolar"
+
+msgid "Transtorno de Pânico"
+msgstr "Trastorno de Pánico"
+
+msgid "Insuficiência renal crónica"
+msgstr "Insuficiencia renal crónica"
+
+msgid "Diabetes Tipo 1"
+msgstr "Diabetes Tipo 1"
+
+msgid "Diabetes Tipo 2"
+msgstr "Diabetes Tipo 2"
+
+msgid "Hemofilia"
+msgstr "Hemofilia"
+
+msgid "Transplante de coração"
+msgstr "Trasplante de corazón"
+
+msgid "Transplante de pulmão"
+msgstr "Trasplante de pulmón"
+
+msgid "Transplante de fígado"
+msgstr "Trasplante de hígado"
+
+msgid "Transplante de rim"
+msgstr "Trasplante de riñón"
+
+msgid "Incapacidade visual"
+msgstr "Incapacidad visual"
+
+msgid "Surdez"
+msgstr "Sordera"
+
+msgid "Cegueira"
+msgstr "Ceguera"
+
+msgid "Cadeira de rodas"
+msgstr "Silla de ruedas"
+
+msgid "Cego"
+msgstr "Ciego"
+
+msgid "Surdo"
+msgstr "Sordo"
+
+msgid "Cadeirante"
+msgstr "Silla de ruedas"
+
+msgid "Doença"
+msgstr "Enfermedad"
