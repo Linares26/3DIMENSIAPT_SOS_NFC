@@ -106,6 +106,10 @@ else:
 # ARCHIVOS ESTÁTICOS Y MULTIMEDIA (FOTOS)
 # ==========================================
 STATIC_URL = '/static/'
+# ESTA LÍNEA ES OBLIGATORIA SI TUS ESTÁTICOS ESTÁN EN LA RAÍZ:
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
