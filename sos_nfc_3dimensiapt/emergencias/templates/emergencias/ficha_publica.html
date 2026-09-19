@@ -81,9 +81,9 @@
 
         <!-- 1. TARJETA DE IDENTIFICACIÓN -->
         <div class="bg-white rounded-3xl p-5 shadow-sm border border-slate-200/80 flex items-center space-x-4">
-            <img src="{% if llavero.foto %}{{ llavero.foto.url }}{% else %}https://jfyosdfmstbtvrmurvjb.supabase.co/storage/v1/object/public/media/llaveros/avatares/no-avatar.jpg{% endif %}" 
+            <img src="{% if llavero.foto %}{{ llavero.foto.url }}{% else %}/media/llaveros/avatares/no-avatar.jpg{% endif %}" 
                  alt="{{ llavero.nombre_menor }}" 
-                 onerror="this.onerror=null; this.src='https://jfyosdfmstbtvrmurvjb.supabase.co/storage/v1/object/public/media/llaveros/avatares/no-avatar.jpg';"
+                 onerror="this.onerror=null; this.src='/media/llaveros/avatares/no-avatar.jpg';"
                  class="w-20 h-20 rounded-2xl object-cover ring-4 ring-rose-100 shadow bg-slate-50">
 
             <div class="flex-1 min-w-0">
